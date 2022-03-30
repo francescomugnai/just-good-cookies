@@ -31,8 +31,10 @@ This library provides 9 different banner styles that **ONLY** work in conjunctio
 ## Donations
 
 JFC is a free open-source project that I work on in my spare time (but hey, I put a lot of work into it). <br/>
-If you want to support the project, you can buy me a beer (or two 🍻, I love beer) ❤️!
+If you want to support the project, you can buy me a coffee or a beer (or two 🍻, I love beer) ❤️!
 Thank you!
+
+<a href="https://www.buymeacoffee.com/mugnai" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 <hr/>
 
