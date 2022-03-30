@@ -91,7 +91,7 @@ There are 2 ways to use JGC in your projects:
 1. Copy this script and paste it on your site (ideally into the head tag)
 
 ```js
-<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.8.1/dist/justgoodcookies.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.8.4/dist/justgoodcookies.min.js"></script>
 ```
 
 2. Install Tailwind (if you haven't already, see [below](#tailwind))
@@ -118,9 +118,9 @@ justgoodcookies.init({
 
 And...you are done 🚀
 
-#### COMING SOON: Using NPM
+#### Using NPM
 
-<!-- 1. Install the package
+1. Install the package
 
 ```bash
 npm install just-good-cookies
@@ -134,7 +134,7 @@ import justgoodcookies from "just-good-cookies";
 
 3. Install Tailwind (if you haven't already, see [below](#tailwind))
 
-4. Initialize JGC (see the previous example) 🚀 -->
+4. Initialize JGC (see the previous example) 🚀
 
 <hr>
 
