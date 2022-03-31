@@ -1,5 +1,4 @@
 node_modules/
 .dccache
-package.json
 package-lock.json
 **/.DS_Store

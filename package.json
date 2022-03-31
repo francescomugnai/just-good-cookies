@@ -1,0 +1,53 @@
+{
+  "name": "just-good-cookies",
+  "version": "0.8.5",
+  "description": "A delicious cookie consent solution for complying with EU cookie law",
+  "license": "MIT",
+  "main": "dist/justgoodcookies.esm.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "bugs": {
+    "url": "https://github.com/francescomugnai/just-good-cookies/issues"
+  },
+  "keywords": [
+    "cookie",
+    "cookie law",
+    "cookie consent",
+    "cookie consent solution",
+    "cookie banner",
+    "banner",
+    "eu Cookie",
+    "GDPR",
+    "gdpr-cookie",
+    "cookies-alert",
+    "javascript",
+    "tailwind",
+    "tailwindcss",
+    "tailwind css",
+    "front-end"
+  ],
+  "homepage": "https://github.com/francescomugnai/just-good-cookies",
+  "author": {
+    "name": "Francesco Mugnai",
+    "email": "info@francescomugnai.com",
+    "url": "https://francescomugnai.com"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.1",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "rollup": "^2.61.1"
+  }
+}
