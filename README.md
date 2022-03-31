@@ -1,6 +1,6 @@
 # Just Good Cookies (JGC)
 
-![JGC Styles](images/jgc.jpg "JGC Styles")
+![JGC Styles](https://raw.githubusercontent.com/francescomugnai/just-good-cookies/main/images/jgc.jpg "JGC")
 
 > **Please note**: JGC is in its **pre-release stage** It may be buggy and may not work as expected. Some features may be added, **others may be completely removed or delayed**.
 > 🚧 It is currently being actively tested. Use at your own risk! 🚧
@@ -563,7 +563,7 @@ Parameters:
 
 ## Styles
 
-![JGC Styles](images/jgc-styles.jpg "JGC Styles")
+![JGC Styles](https://raw.githubusercontent.com/francescomugnai/just-good-cookies/main/images/jgc-styles.jpg "JGC Styles")
 
 Choose your favorite layout and customize it (and soon I will make more).
 `style1`, `style2`, `style3`, `style4`, `style5`, `style6`, `style7` are generic styles (only the layouts are different, not the functions).
