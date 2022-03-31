@@ -369,7 +369,7 @@
         if (this.onAccept && typeof this.onAccept == 'function') this.onAccept();
         this.closeBanner();
         this.removeDivsOfUserAcceptedIframes();
-        if (this.auto && !this.bannerConfig.onAccept) window.location.reload();
+        if (!this.bannerConfig.onAccept) window.location.reload();
         if (document.getElementById('preferenceDiv')) this.closePreferencePanel();
       }
       /*
@@ -947,7 +947,7 @@
         if (getElementsJgc) {
           for (var index = 0; index < getElementsJgc.length; index++) {
             var element = getElementsJgc[index];
-            var getService = element.getAttribute('data-jgc-service').escape();
+            var getService = element.getAttribute('data-jgc-service') ? element.getAttribute('data-jgc-service').escape() : null;
 
             if (getService) {
               if (element.hasAttribute('data-jgc-remove')) check = true;

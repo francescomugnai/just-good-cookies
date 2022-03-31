@@ -118,7 +118,8 @@ class JustGoodCookies {
     if(this.onAccept && typeof(this.onAccept) == 'function') this.onAccept()
     this.closeBanner() 
     this.removeDivsOfUserAcceptedIframes()
-    if(this.auto && !this.bannerConfig.onAccept) window.location.reload()
+
+    if(!this.bannerConfig.onAccept) window.location.reload()
     if(document.getElementById('preferenceDiv')) this.closePreferencePanel()
   }
   
@@ -527,7 +528,7 @@ class JustGoodCookies {
     if(getElementsJgc){
       for (let index = 0; index < getElementsJgc.length; index++) {
         const element = getElementsJgc[index];
-        const getService = element.getAttribute('data-jgc-service').escape()
+        const getService = element.getAttribute('data-jgc-service') ? element.getAttribute('data-jgc-service').escape() : null
         if(getService) {
           if(element.hasAttribute('data-jgc-remove')) check = true
           arr+= this.makeArrForServices(getService)
@@ -1829,25 +1830,25 @@ class JustGoodCookies {
       setTimeout(() => {
         let checkedElement = undefined 
         document.querySelectorAll('iframe,script,link').forEach((element) => {
-        const src = element.src ||(element.tagName == 'LINK' ? element.getAttribute("href") : undefined)
-        if(src) {
-          if(!element.getAttribute('data-jgc-tag')){
-            element.classList.remove(this.checkTailwindPrefix('hidden'))
-            if(objKeys.some((v) => {
-              if(src && src.includes(v)){
-                arrService.push(this.autoCategories[v])
-                checkedElement = v
-                return src.includes(v)
+          const src = element.src ||(element.tagName == 'LINK' ? element.getAttribute("href") : undefined)
+          if(src) {
+            if(!element.getAttribute('data-jgc-tag')){
+              element.classList.remove(this.checkTailwindPrefix('hidden'))
+              if(objKeys.some((v) => {
+                if(src && src.includes(v)){
+                  arrService.push(this.autoCategories[v])
+                  checkedElement = v
+                  return src.includes(v)
+                }
+              })){
+                let checkIfNecessary = Object.values(this.autoCategories[checkedElement])
+                if(checkIfNecessary[1] != 'necessary'){
+                if(element.tagName == 'IFRAME') this.generateIframeDivs(element)
+                this.removeElements(element)
               }
-            })){
-            let checkIfNecessary = Object.values(this.autoCategories[checkedElement])
-            if(checkIfNecessary[1] != 'necessary'){
-              if(element.tagName == 'IFRAME') this.generateIframeDivs(element)
-              this.removeElements(element)
-            }
-           } 
-          } 
-        }
+            } 
+            } 
+          }
       })
       this.generatePreferenceStorage()
       }, 1);
