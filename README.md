@@ -5,6 +5,8 @@
 > **Please note**: JGC is in its **pre-release stage** It may be buggy and may not work as expected. Some features may be added, **others may be completely removed or delayed**.
 > 🚧 It is currently being actively tested. Use at your own risk! 🚧
 
+![npm](https://img.shields.io/npm/v/just-good-cookies?color=%23bbf7d0&label=version) ![GitHub top language](https://img.shields.io/github/languages/top/francescomugnai/just-good-cookies?color=%23bbf7d0) ![npm bundle size](https://img.shields.io/bundlephobia/min/just-good-cookies?color=%23bbf7d0) ![NPM](https://img.shields.io/npm/l/just-good-cookies?color=%23bbf7d0) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/francescomugnai/just-good-cookies/CodeQL?color=%23bbf7d0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/francescomugnai/just-good-cookies?color=%23bbf7d0)
+
 Just Good Cookies (JGC) is a simple (but delicious) cookie consent solution made in vanilla JavaScript.
 It is designed to be fast, painless and easy to use.
 JGC supports both automatic and manual cookie blocking modes, and also generates a fully automatic settings panel.
