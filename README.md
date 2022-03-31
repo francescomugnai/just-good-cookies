@@ -95,7 +95,7 @@ There are 2 ways to use JGC in your projects:
 1. Copy this script and paste it on your site (ideally into the head tag)
 
 ```js
-<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.8.5/dist/justgoodcookies.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.8.6/dist/justgoodcookies.min.js"></script>
 ```
 
 2. Install Tailwind (if you haven't already, see [below](#tailwind))
