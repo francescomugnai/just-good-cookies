@@ -2,7 +2,7 @@
     @license
     JustGoodCookies
     Created by Francesco Mugnai 
-    2022 - v 0.8.7
+    2022 - v 0.8.8
     Released under MIT License
     If you use this script, you will always remain the sole responsible party, use it at your own risk
     https://github.com/francescomugnai/just-good-cookies
@@ -1929,14 +1929,14 @@ class JustGoodCookies {
     this.text = {
       acceptSelectedText: data.text?.acceptSelectedText ? this.isString(data.text.acceptSelectedText, "acceptSelectedText") : this.locale.acceptSelectedText,
       acceptText: data.text?.acceptText ? this.isString(data.text.acceptText, "acceptText") : this.locale.acceptText,
-      bannerLinkLabel: !data.text?.bannerLinkLabel ? this.isString(data.text.bannerLinkLabel, "bannerLinkLabel") : this.locale.bannerLinkLabel,
-      descriptionText: !data.text?.descriptionText ? this.isString(data.text.descriptionText, "descriptionText") : null,
-      panelTitle: !data.text?.panelTitle ? this.isString(data.text.panelTitle, "panelTitle") : this.locale.panelTitle,
-      preferencesText: !data.text?.preferencesText ? this.isString(data.text.preferencesText, "preferencesText") : this.locale.preferencesText,
-      rejectText: !data.text?.rejectText ? this.isString(data.text.rejectText, "rejectText") : this.locale.rejectText,
-      saveButton: !data.text?.saveButton ? this.isString(data.text.saveButton, "saveButton") : this.locale.saveAndContinue,
-      saveAllButton: !data.text?.saveAllButton ? this.isString(data.text.saveAllButton, "saveAllButton") : this.locale.saveAndContinueAcceptAll,
-      servicesTag: !data.text?.servicesTag ? this.isString(data.text.servicesTag, "servicesTag") : this.locale.servicesText,
+      bannerLinkLabel: data.text?.bannerLinkLabel ? this.isString(data.text.bannerLinkLabel, "bannerLinkLabel") : this.locale.bannerLinkLabel,
+      descriptionText: data.text?.descriptionText ? this.isString(data.text.descriptionText, "descriptionText") : null,
+      panelTitle: data.text?.panelTitle ? this.isString(data.text.panelTitle, "panelTitle") : this.locale.panelTitle,
+      preferencesText: data.text?.preferencesText ? this.isString(data.text.preferencesText, "preferencesText") : this.locale.preferencesText,
+      rejectText: data.text?.rejectText ? this.isString(data.text.rejectText, "rejectText") : this.locale.rejectText,
+      saveButton: data.text?.saveButton ? this.isString(data.text.saveButton, "saveButton") : this.locale.saveAndContinue,
+      saveAllButton: data.text?.saveAllButton ? this.isString(data.text.saveAllButton, "saveAllButton") : this.locale.saveAndContinueAcceptAll,
+      servicesTag: data.text?.servicesTag ? this.isString(data.text.servicesTag, "servicesTag") : this.locale.servicesText,
     }
   
     // Banner config & style 

@@ -216,7 +216,7 @@
       @license
       JustGoodCookies
       Created by Francesco Mugnai 
-      2022 - v 0.8.7
+      2022 - v 0.8.8
       Released under MIT License
       If you use this script, you will always remain the sole responsible party, use it at your own risk
       https://github.com/francescomugnai/just-good-cookies
@@ -2385,14 +2385,14 @@
         this.text = {
           acceptSelectedText: (_data$text = data.text) !== null && _data$text !== void 0 && _data$text.acceptSelectedText ? this.isString(data.text.acceptSelectedText, "acceptSelectedText") : this.locale.acceptSelectedText,
           acceptText: (_data$text2 = data.text) !== null && _data$text2 !== void 0 && _data$text2.acceptText ? this.isString(data.text.acceptText, "acceptText") : this.locale.acceptText,
-          bannerLinkLabel: !((_data$text3 = data.text) !== null && _data$text3 !== void 0 && _data$text3.bannerLinkLabel) ? this.isString(data.text.bannerLinkLabel, "bannerLinkLabel") : this.locale.bannerLinkLabel,
-          descriptionText: !((_data$text4 = data.text) !== null && _data$text4 !== void 0 && _data$text4.descriptionText) ? this.isString(data.text.descriptionText, "descriptionText") : null,
-          panelTitle: !((_data$text5 = data.text) !== null && _data$text5 !== void 0 && _data$text5.panelTitle) ? this.isString(data.text.panelTitle, "panelTitle") : this.locale.panelTitle,
-          preferencesText: !((_data$text6 = data.text) !== null && _data$text6 !== void 0 && _data$text6.preferencesText) ? this.isString(data.text.preferencesText, "preferencesText") : this.locale.preferencesText,
-          rejectText: !((_data$text7 = data.text) !== null && _data$text7 !== void 0 && _data$text7.rejectText) ? this.isString(data.text.rejectText, "rejectText") : this.locale.rejectText,
-          saveButton: !((_data$text8 = data.text) !== null && _data$text8 !== void 0 && _data$text8.saveButton) ? this.isString(data.text.saveButton, "saveButton") : this.locale.saveAndContinue,
-          saveAllButton: !((_data$text9 = data.text) !== null && _data$text9 !== void 0 && _data$text9.saveAllButton) ? this.isString(data.text.saveAllButton, "saveAllButton") : this.locale.saveAndContinueAcceptAll,
-          servicesTag: !((_data$text10 = data.text) !== null && _data$text10 !== void 0 && _data$text10.servicesTag) ? this.isString(data.text.servicesTag, "servicesTag") : this.locale.servicesText
+          bannerLinkLabel: (_data$text3 = data.text) !== null && _data$text3 !== void 0 && _data$text3.bannerLinkLabel ? this.isString(data.text.bannerLinkLabel, "bannerLinkLabel") : this.locale.bannerLinkLabel,
+          descriptionText: (_data$text4 = data.text) !== null && _data$text4 !== void 0 && _data$text4.descriptionText ? this.isString(data.text.descriptionText, "descriptionText") : null,
+          panelTitle: (_data$text5 = data.text) !== null && _data$text5 !== void 0 && _data$text5.panelTitle ? this.isString(data.text.panelTitle, "panelTitle") : this.locale.panelTitle,
+          preferencesText: (_data$text6 = data.text) !== null && _data$text6 !== void 0 && _data$text6.preferencesText ? this.isString(data.text.preferencesText, "preferencesText") : this.locale.preferencesText,
+          rejectText: (_data$text7 = data.text) !== null && _data$text7 !== void 0 && _data$text7.rejectText ? this.isString(data.text.rejectText, "rejectText") : this.locale.rejectText,
+          saveButton: (_data$text8 = data.text) !== null && _data$text8 !== void 0 && _data$text8.saveButton ? this.isString(data.text.saveButton, "saveButton") : this.locale.saveAndContinue,
+          saveAllButton: (_data$text9 = data.text) !== null && _data$text9 !== void 0 && _data$text9.saveAllButton ? this.isString(data.text.saveAllButton, "saveAllButton") : this.locale.saveAndContinueAcceptAll,
+          servicesTag: (_data$text10 = data.text) !== null && _data$text10 !== void 0 && _data$text10.servicesTag ? this.isString(data.text.servicesTag, "servicesTag") : this.locale.servicesText
         }; // Banner config & style 
 
         this.bannerConfig = {
