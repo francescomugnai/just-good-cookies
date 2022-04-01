@@ -2,7 +2,7 @@
     @license
     JustGoodCookies
     Created by Francesco Mugnai 
-    2022 - v 0.8.6
+    2022 - v 0.8.7
     Released under MIT License
     If you use this script, you will always remain the sole responsible party, use it at your own risk
     https://github.com/francescomugnai/just-good-cookies
@@ -13,6 +13,7 @@ class JustGoodCookies {
     this.config = undefined // General config
     this.activate = undefined // Custom Activations
     this.locale = undefined // Locale 
+    this.localeString = undefined // Lang string
     this.cookieTimeout = undefined; // Default cookie duration (360 days)
 
     /** Banner */
@@ -146,10 +147,10 @@ class JustGoodCookies {
       if(bannerLink) this.bannerLink = bannerLink.innerHTML
   
       let panelHeader = document.getElementById('jgc-panel-header')
-      if(!this.isEmpty(panelHeader)) this.panelHeader = panelHeader.innerHTML
+      if(panelHeader) this.panelHeader = panelHeader.innerHTML
   
       let panelFooter = document.getElementById('jgc-panel-footer')
-      if(!this.isEmpty(panelFooter)) this.panelFooter = panelFooter.innerHTML
+      if(panelFooter) this.panelFooter = panelFooter.innerHTML
     }
 
   /*
@@ -662,8 +663,8 @@ class JustGoodCookies {
       </div>
       `;
       document.body.appendChild(cookiePanel);
-      if(!this.isEmpty(document.getElementById('jgc-panel-header'))) document.getElementById('jgc-custom-header').innerHTML = this.panelHeader 
-      if(!this.isEmpty(document.getElementById('jgc-panel-footer'))) document.getElementById('jgc-custom-footer').innerHTML = this.panelFooter
+      if(document.getElementById('jgc-panel-header')) document.getElementById('jgc-custom-header').innerHTML = this.panelHeader 
+      if(document.getElementById('jgc-panel-footer')) document.getElementById('jgc-custom-footer').innerHTML = this.panelFooter
       document.getElementById('closePreferencePanel').addEventListener('click', () => this.closePreferencePanel()) 
       document.getElementById('closePreferencePanelAcceptAll').addEventListener('click', () => this.closePreferencePanelAndSaveAll())
     } else {
@@ -713,21 +714,15 @@ class JustGoodCookies {
 
   /**
   * UTILITY
-  * Check if a value is null, undefined or ''
-  */
-  isEmpty(value){
-    return value === null || typeof(value) === 'undefined' || value === ''
-  }
-
-  /**
-  * UTILITY
-  * Check if a value is a string
+  * Checking whether a value is a string or an object (for translations)
   */
   isString(value, key){
     if (typeof value === 'string' || value instanceof String){
-      return value
+      return value.escape()
+    } else if(typeof value === 'object' || value instanceof Object){
+      return value[this.localeString].escape()
     } else {
-      throw `: "${key}" is not valid, must be a string.`
+      throw `: "${key}" is not valid, must be a string or an object.`
     }
   }
 
@@ -736,8 +731,8 @@ class JustGoodCookies {
   * Check if a value is a boolean
   */
   isBoolean(value, key){
-    if (typeof value == "boolean") {
-      return value
+    if(value != "undefined" && typeof value == 'boolean'){
+      return true
     } else {
       throw `: "${key}" is not valid, must be a boolean.`
     }
@@ -1886,7 +1881,10 @@ class JustGoodCookies {
   */
   init(data) {
     data ? data : {}
-    data.locale ? this.locale = new Languages(data.locale.escape()) : this.locale = new Languages('en') 
+    if(data.locale){
+      this.locale = new Languages(data.locale.escape()) || new Languages('en') 
+      this.localeString = data.locale
+    } 
     if(data.autoMode && this.isBoolean(data.autoMode, "autoMode")){
       let checkPreferences = this.getCookie('JgcPreferences');
       if(!checkPreferences){
@@ -1911,7 +1909,7 @@ class JustGoodCookies {
     }
 
     // Cookie duration
-    this.cookieTimeout = !this.isEmpty(data.cookieDuration) ? data.cookieDuration : 360
+    this.cookieTimeout = data.cookieDuration ? data.cookieDuration : 360
 
     // Tailwind Prefix
     if(data.tailwindPrefix){
@@ -1929,98 +1927,92 @@ class JustGoodCookies {
 
     // Custom texts 
     this.text = {
-      acceptSelectedText: !this.isEmpty(data.text?.acceptSelectedText) ? this.isString(data.text.acceptSelectedText.escape(), "acceptSelectedText") : this.locale.acceptSelectedText,
-      acceptText: !this.isEmpty(data.text?.acceptText) ? this.isString(data.text.acceptText.escape(), "acceptText") : this.locale.acceptText,
-      bannerLinkLabel: !this.isEmpty(data.text?.bannerLinkLabel) ? this.isString(data.text.bannerLinkLabel.escape(), "bannerLinkLabel") : this.locale.bannerLinkLabel,
-      descriptionText: !this.isEmpty(data.text?.descriptionText) ? this.isString(data.text.descriptionText.escape(), "descriptionText") : null,
-      panelTitle: !this.isEmpty(data.text?.panelTitle) ? this.isString(data.text.panelTitle.escape(), "panelTitle") : this.locale.panelTitle,
-      preferencesText: !this.isEmpty(data.text?.preferencesText) ? this.isString(data.text.preferencesText.escape(), "preferencesText") : this.locale.preferencesText,
-      rejectText: !this.isEmpty(data.text?.rejectText) ? this.isString(data.text.rejectText.escape(), "rejectText") : this.locale.rejectText,
-      saveButton: !this.isEmpty(data.text?.saveButton) ? this.isString(data.text.saveButton.escape(), "saveButton") : this.locale.saveAndContinue,
-      saveAllButton: !this.isEmpty(data.text?.saveAllButton) ? this.isString(data.text.saveAllButton.escape(), "saveAllButton") : this.locale.saveAndContinueAcceptAll,
-      servicesTag: !this.isEmpty(data.text?.servicesTag) ? this.isString(data.text.servicesTag.escape(), "servicesTag") : this.locale.servicesText,
+      acceptSelectedText: data.text?.acceptSelectedText ? this.isString(data.text.acceptSelectedText, "acceptSelectedText") : this.locale.acceptSelectedText,
+      acceptText: data.text?.acceptText ? this.isString(data.text.acceptText, "acceptText") : this.locale.acceptText,
+      bannerLinkLabel: !data.text?.bannerLinkLabel ? this.isString(data.text.bannerLinkLabel, "bannerLinkLabel") : this.locale.bannerLinkLabel,
+      descriptionText: !data.text?.descriptionText ? this.isString(data.text.descriptionText, "descriptionText") : null,
+      panelTitle: !data.text?.panelTitle ? this.isString(data.text.panelTitle, "panelTitle") : this.locale.panelTitle,
+      preferencesText: !data.text?.preferencesText ? this.isString(data.text.preferencesText, "preferencesText") : this.locale.preferencesText,
+      rejectText: !data.text?.rejectText ? this.isString(data.text.rejectText, "rejectText") : this.locale.rejectText,
+      saveButton: !data.text?.saveButton ? this.isString(data.text.saveButton, "saveButton") : this.locale.saveAndContinue,
+      saveAllButton: !data.text?.saveAllButton ? this.isString(data.text.saveAllButton, "saveAllButton") : this.locale.saveAndContinueAcceptAll,
+      servicesTag: !data.text?.servicesTag ? this.isString(data.text.servicesTag, "servicesTag") : this.locale.servicesText,
     }
   
     // Banner config & style 
     this.bannerConfig = {
-      animation: !this.isEmpty(data.banner?.animation) ? this.isBoolean(data.banner.animation, "animation") : true,
-      backgroundColor: !this.isEmpty(data.banner?.backgroundColor) ? this.isString(data.banner.backgroundColor.escape(), "backgroundColor") : this.checkTailwindPrefix('bg-white dark:bg-gray-800'),
-      backgroundDark: !this.isEmpty(data.banner?.backgroundDark) ?this.isBoolean( data.banner.backgroundDark, "backgroundDark") : false,
-      backgroundImage: !this.isEmpty(data.banner?.backgroundImage) ? this.isString(data.banner.backgroundImage.escape(), "backgroundImage") : null,
-      closeButton: !this.isEmpty(data.banner?.closeButton) ? this.isBoolean(data.banner.closeButton, "closeButton") : true,
-      closeButtonAccept: !this.isEmpty(data.banner?.closeButtonAccept) ? this.isBoolean(data.banner.closeButtonAccept, "closeButtonAccept") : false,
-      disableReject: !this.isEmpty(data.banner?.disableReject) ? this.isBoolean(data.banner.disableReject, "disableReject") : false,
-      icon: !this.isEmpty(data.banner?.icon) ? this.isString(data.banner.icon.escape(), "icon") : null,
-      iconDark: !this.isEmpty(data.banner?.iconDark) ? this.isString(data.banner.iconDark.escape(), "iconDark") : null,
-      innerBackgroundImage: !this.isEmpty(data.banner?.innerBackgroundImage) ? this.isString(data.banner.innerBackgroundImage.escape(), "innerBackgroundImage") : null,
-      logo: !this.isEmpty(data.banner?.logo) ? this.isString(data.banner.logo.escape(), "logo") : undefined,
-      logoClasses: !this.isEmpty(data.banner?.logoClasses) ? this.isString(data.banner.logoClasses, "logoClasses") : undefined,
-      maxWidth: !this.isEmpty(data.banner?.maxWidth) ? this.isString(data.banner.maxWidth, "maxWidth") : undefined,
-      onAccept: !this.isEmpty(data.banner?.onAccept) ? this.onAccept = this.isFunction(data.banner.onAccept, "onAccept") : null,
-      onReject: !this.isEmpty(data.banner?.onReject) ? this.onReject = this.isFunction(data.banner.onReject, "onReject") : null,
-      position: !this.isEmpty(data.banner?.position) ? this.isString(data.banner.position.escape()) : undefined,
-      shortText: !this.isEmpty(data.banner?.shortText) && this.isBoolean(data.banner.shortText, "shortText") ? this.locale.acceptShortText : this.acceptText,
-      title: !this.isEmpty(data.banner?.title) ? this.isString(data.banner.title.escape(), "title") : 'Cookies',
+      animation: this.isBoolean(data.banner.animation, "animation") ? data.banner.animation : true,
+      backgroundColor: data.banner?.backgroundColor ? this.isString(data.banner.backgroundColor, "backgroundColor") : this.checkTailwindPrefix('bg-white dark:bg-gray-800'),
+      backgroundDark: data.banner?.backgroundDark ?this.isBoolean( data.banner.backgroundDark, "backgroundDark") : false,
+      backgroundImage: data.banner?.backgroundImage ? this.isString(data.banner.backgroundImage, "backgroundImage") : null,
+      closeButton: data.banner?.closeButton ? this.isBoolean(data.banner.closeButton, "closeButton") : true,
+      closeButtonAccept: data.banner?.closeButtonAccept ? this.isBoolean(data.banner.closeButtonAccept, "closeButtonAccept") : false,
+      disableReject: data.banner?.disableReject ? this.isBoolean(data.banner.disableReject, "disableReject") : false,
+      icon: data.banner?.icon ? this.isString(data.banner.icon, "icon") : null,
+      iconDark: data.banner?.iconDark ? this.isString(data.banner.iconDark, "iconDark") : null,
+      innerBackgroundImage: data.banner?.innerBackgroundImage ? this.isString(data.banner.innerBackgroundImage, "innerBackgroundImage") : null,
+      logo: data.banner?.logo ? this.isString(data.banner.logo, "logo") : undefined,
+      logoClasses: data.banner?.logoClasses ? this.isString(data.banner.logoClasses, "logoClasses") : undefined,
+      maxWidth: data.banner?.maxWidth ? this.isString(data.banner.maxWidth, "maxWidth") : undefined,
+      onAccept: data.banner?.onAccept ? this.onAccept = this.isFunction(data.banner.onAccept, "onAccept") : null,
+      onReject: data.banner?.onReject ? this.onReject = this.isFunction(data.banner.onReject, "onReject") : null,
+      position: data.banner?.position ? this.isString(data.banner.position) : undefined,
+      shortText: data.banner?.shortText && this.isBoolean(data.banner.shortText, "shortText") ? this.locale.acceptShortText : this.acceptText,
+      title: data.banner?.title ? this.isString(data.banner.title, "title") : 'Cookies',
     }
 
     // Custom text placeholder
     if(data.placeholder) {
       this.placeholder = {
-        classes: !this.isEmpty(data.placeholder?.classes) && this.isString(data.placeholder.classes.escape(), "placeholder classes"),
-        image: !this.isEmpty(data.placeholder?.image) && this.isString(data.placeholder.image.escape(), "placeholder image"),
-        text: !this.isEmpty(data.placeholder?.text) && this.isString(data.placeholder.text.escape(), "placeholder text"),
+        classes: data.placeholder?.classes && this.isString(data.placeholder.classes, "placeholder classes"),
+        image: data.placeholder?.image && this.isString(data.placeholder.image, "placeholder image"),
+        text: data.placeholder?.text && this.isString(data.placeholder.text, "placeholder text"),
       }
     }
    
     // Preference Panel
     if(data.panel) {
       this.panel = {
-        bgColor: !this.isEmpty(data.panel?.bgColor) ? this.isString(data.panel.bgColor.escape(), "bgColor") : null,
-        open: !this.isEmpty(data.panel?.open) ? this.isBoolean(data.panel.open, "open") : false,
-        padding: !this.isEmpty(data.panel?.padding) ? this.isBoolean(data.panel.padding, "padding") : false,
+        bgColor: data.panel?.bgColor ? this.isString(data.panel.bgColor, "bgColor") : null,
+        open: data.panel?.open ? this.isBoolean(data.panel.open, "open") : false,
+        padding: data.panel?.padding ? this.isBoolean(data.panel.padding, "padding") : false,
       }
     }
 
     // Banner style
     if(data.style) {
       this.customStyle = {        
-        accept: !this.isEmpty(data.style?.accept) ? this.isString(data.style.accept.escape(), "accept") : null,
-        bannerText: !this.isEmpty(data.style?.bannerText) ? this.isString(data.style.bannerText.escape(), "bannerText") : null,
-        bannerTitle: !this.isEmpty(data.style?.bannerTitle) ? this.isString(data.style.bannerTitle.escape(), "bannerTitle") : null,
-        closeButton: !this.isEmpty(data.style?.closeButton) ? this.isString(data.style.closeButton.escape(), "services: closeButton") : null, 
-        toggles: !this.isEmpty(data.style?.toggles) ? this.isString(data.style.toggles.escape(), "toggles") : null,
-        lockIcon: !this.isEmpty(data.style?.lockIcon) ? this.isString(data.style.lockIcon.escape(), "lockIcon") : null,
-        panelHeader: !this.isEmpty(data.style?.panelHeader) ? this.isString(data.style.panelHeader.escape(), "panelHeader") : null, 
-        panelText: !this.isEmpty(data.style?.panelText) ? this.isString(data.style.panelText.escape(), "panelText") : null, 
-        panelTitle:  !this.isEmpty(data.style?.panelTitle) ? this.isString(data.style.panelTitle.escape(), "classes") : null,
-        preferencesText: !this.isEmpty(data.style?.preferencesText) ? this.isString(data.style.preferencesText.escape(), "services: preferencesText") : null, 
-        privacyLink: !this.isEmpty(data.style?.privacyLink) ? this.isString(data.style.privacyLink.escape(), "services: privacyLink") : null, 
-        reject: !this.isEmpty(data.style?.reject) ? this.isString(data.style.reject.escape(), "reject") : null,
-        saveButton: !this.isEmpty(data.style?.saveButton) ? this.isString(data.style.saveButton.escape(), "classes") : null,
-        saveAllButton: !this.isEmpty(data.style?.saveAllButton) ? this.isString(data.style.saveAllButton.escape(), "classes") : null,
-        servicesText: !this.isEmpty(data.style?.servicesText) ? this.isString(data.style.servicesText.escape(), "services: servicesText") : null, 
-        servicesTag: !this.isEmpty(data.style?.servicesTag) ? this.isString(data.style.servicesTag.escape(), "services: servicesTag") : null, 
-        stripes: !this.isEmpty(data.style?.stripes) ? this.isString(data.style.stripes.escape(), "stripes: classes") : null,
+        accept: data.style?.accept ? this.isString(data.style.accept, "accept") : null,
+        bannerText: data.style?.bannerText ? this.isString(data.style.bannerText, "bannerText") : null,
+        bannerTitle: data.style?.bannerTitle ? this.isString(data.style.bannerTitle, "bannerTitle") : null,
+        closeButton: data.style?.closeButton ? this.isString(data.style.closeButton, "services: closeButton") : null, 
+        toggles: data.style?.toggles ? this.isString(data.style.toggles, "toggles") : null,
+        lockIcon: data.style?.lockIcon ? this.isString(data.style.lockIcon, "lockIcon") : null,
+        panelHeader: data.style?.panelHeader ? this.isString(data.style.panelHeader, "panelHeader") : null, 
+        panelText: data.style?.panelText ? this.isString(data.style.panelText, "panelText") : null, 
+        panelTitle:  data.style?.panelTitle ? this.isString(data.style.panelTitle, "classes") : null,
+        preferencesText: data.style?.preferencesText ? this.isString(data.style.preferencesText, "services: preferencesText") : null, 
+        privacyLink: data.style?.privacyLink ? this.isString(data.style.privacyLink, "services: privacyLink") : null, 
+        reject: data.style?.reject ? this.isString(data.style.reject, "reject") : null,
+        saveButton: data.style?.saveButton ? this.isString(data.style.saveButton, "classes") : null,
+        saveAllButton: data.style?.saveAllButton ? this.isString(data.style.saveAllButton, "classes") : null,
+        servicesText: data.style?.servicesText ? this.isString(data.style.servicesText, "services: servicesText") : null, 
+        servicesTag: data.style?.servicesTag ? this.isString(data.style.servicesTag, "services: servicesTag") : null, 
+        stripes: data.style?.stripes ? this.isString(data.style.stripes, "stripes: classes") : null,
       }
     }
   
     // Cookie Categories
     if(data.cookies) {
       this.getCustomCookies = {}
-      for(let a of Object.keys(data.cookies)){
-        for (let [title] of Object.entries(data.cookies[a])) {
-            if(title == 'title'){
-              data.cookies[a]['title'] = data.cookies[a]['title'].escape()
-            } else if(title == 'description'){
-              data.cookies[a]['description'] = data.cookies[a]['description'].escape()
-            }
-          }
-        }
+      for(let jgcTag of Object.keys(data.cookies)){
+        for (let [objKey] of Object.entries(data.cookies[jgcTag])) data.cookies[jgcTag][objKey] = this.isString(data.cookies[jgcTag][objKey])
+      }
       this.getCustomCookies = data.cookies
     }
 
     // Activations
-    this.activate = !this.isEmpty(data.activate) ? data.activate : null
+    this.activate = data.activate ? data.activate : null
     
     // Default button styles
     this.style = {

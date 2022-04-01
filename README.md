@@ -64,6 +64,7 @@ Thank you!
 
 ### WIKI - HOWTOs
 
+- [How to translate the custom strings and make JGC fully multilingual](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-translate-the-custom-strings-and-make-JGC-fully-multilingual)
 - [How to customize the panel header and footer](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-customize-the-panel-header-and-footer)
 - [How to fire the preference panel from a button](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-fire-the-preference-panel)
 - [How to replace the banner description with a custom div](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-replace-the-banner-description-with-a-custom-div)
@@ -95,7 +96,7 @@ There are 2 ways to use JGC in your projects:
 1. Copy this script and paste it on your site (ideally into the head tag)
 
 ```js
-<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.8.6/dist/justgoodcookies.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.8.7/dist/justgoodcookies.min.js"></script>
 ```
 
 2. Install Tailwind (if you haven't already, see [below](#tailwind))

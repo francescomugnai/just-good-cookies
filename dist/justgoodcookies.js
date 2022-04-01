@@ -30,6 +30,16 @@
     return target;
   }
 
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    }, _typeof(obj);
+  }
+
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -206,7 +216,7 @@
       @license
       JustGoodCookies
       Created by Francesco Mugnai 
-      2022 - v 0.8.6
+      2022 - v 0.8.7
       Released under MIT License
       If you use this script, you will always remain the sole responsible party, use it at your own risk
       https://github.com/francescomugnai/just-good-cookies
@@ -227,6 +237,8 @@
       this.activate = undefined; // Custom Activations
 
       this.locale = undefined; // Locale 
+
+      this.localeString = undefined; // Lang string
 
       this.cookieTimeout = undefined; // Default cookie duration (360 days)
 
@@ -400,9 +412,9 @@
         var bannerLink = document.getElementById('jgc-banner-link');
         if (bannerLink) this.bannerLink = bannerLink.innerHTML;
         var panelHeader = document.getElementById('jgc-panel-header');
-        if (!this.isEmpty(panelHeader)) this.panelHeader = panelHeader.innerHTML;
+        if (panelHeader) this.panelHeader = panelHeader.innerHTML;
         var panelFooter = document.getElementById('jgc-panel-footer');
-        if (!this.isEmpty(panelFooter)) this.panelFooter = panelFooter.innerHTML;
+        if (panelFooter) this.panelFooter = panelFooter.innerHTML;
       }
       /*
       * Check the expiration date of the cookie
@@ -1056,8 +1068,8 @@
           var cookiePanel = document.createElement("div");
           cookiePanel.innerHTML = "\n      <div id=\"preferenceDiv\" style=\"background-color: rgba(0,0,0,0.6);z-index:9999 !important;\" class=\"".concat(this.checkTailwindPrefix(' w-full min-h-screen top-0 fixed flex flex-col p-6 shadow-2xl items-center justify-center mx-auto transition duration-700 ease-in-out'), " ").concat(this.panelHeader ? '' : null, " \">\n            <div id=\"jgc-custom-header\" class=\"").concat(this.checkTailwindPrefix('w-full'), "\"></div>\n              <div class=\"").concat((_this$panel = this.panel) !== null && _this$panel !== void 0 && _this$panel.bgColor ? this.panel.bgColor : "".concat(this.checkTailwindPrefix('bg-white dark:bg-gray-800')), " ").concat(this.checkTailwindPrefix('max-w-3xl w-full'), " ").concat(((_this$panel2 = this.panel) === null || _this$panel2 === void 0 ? void 0 : _this$panel2.padding) == false ? '' : "".concat(this.checkTailwindPrefix('p-2')), "\">\n                <div class=\"").concat((_this$customStyle4 = this.customStyle) !== null && _this$customStyle4 !== void 0 && _this$customStyle4.panelHeader ? this.customStyle.panelHeader : "".concat(this.checkTailwindPrefix('md:flex justify-between px-4 py-4')), "\">\n                  <h2 class=\"").concat((_this$customStyle5 = this.customStyle) !== null && _this$customStyle5 !== void 0 && _this$customStyle5.panelTitle ? this.customStyle.panelTitle : this.checkTailwindPrefix('dark:text-gray-300 leading-snug'), " ").concat(this.checkTailwindPrefix('text-xl font-bold'), "\">\n                    ").concat((_this$text = this.text) !== null && _this$text !== void 0 && _this$text.panelTitle ? this.text.panelTitle : '', " \n                  </h2>\n                  <div class=\"").concat(this.checkTailwindPrefix('space-x-1 md:mt-0 mt-4'), "\">\n                    <button role=\"button\" id=\"closePreferencePanel\" type=\"button\" class=\"").concat((_this$customStyle6 = this.customStyle) !== null && _this$customStyle6 !== void 0 && _this$customStyle6.saveButton ? this.customStyle.saveButton : "".concat(this.checkTailwindPrefix('px-3 py-1 uppercase font-bold tracking-wide text-xs z-index-10 relative rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer text-green-600 ring-1 ring-green-600')), " \">\n                      ").concat((_this$text2 = this.text) !== null && _this$text2 !== void 0 && _this$text2.saveButton ? this.text.saveButton : this.locale.saveAndContinue, "  \n                    </button>\n                    <button role=\"button\" id=\"closePreferencePanelAcceptAll\" type=\"button\" class=\"").concat((_this$customStyle7 = this.customStyle) !== null && _this$customStyle7 !== void 0 && _this$customStyle7.saveAllButton ? this.customStyle.saveAllButton : "".concat(this.checkTailwindPrefix('px-3 py-1 uppercase font-bold tracking-wide text-xs z-index-10 relative rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer text-green-600 ring-1 ring-green-600')), "  \">\n                      ").concat((_this$text3 = this.text) !== null && _this$text3 !== void 0 && _this$text3.saveAllButton ? this.text.saveAllButton : this.locale.saveAndContinueAcceptAll, "  \n                    </button>\n                  </div>\n                </div>\n                <div>\n                  <div style=\"overflow-y: scroll; -webkit-overflow-scrolling: touch; max-height: calc(100vh - 400px);\" class=\"").concat(this.panel && this.panel.stripes ? "".concat(this.panel.stripes.odd, " ").concat(this.panel.stripes.even) : this.checkTailwindPrefix('space-y-4 overflow-y-auto'), " ").concat(this.checkTailwindPrefix('text-sm py-4'), "\"> \n                    ").concat(this.generateOptions(), "\n                  </div> \n                </div>\n              </div>\n              <div id=\"jgc-custom-footer\" class=\"").concat(this.checkTailwindPrefix('w-full'), "\"></div>\n            </div>\n      </div>\n      ");
           document.body.appendChild(cookiePanel);
-          if (!this.isEmpty(document.getElementById('jgc-panel-header'))) document.getElementById('jgc-custom-header').innerHTML = this.panelHeader;
-          if (!this.isEmpty(document.getElementById('jgc-panel-footer'))) document.getElementById('jgc-custom-footer').innerHTML = this.panelFooter;
+          if (document.getElementById('jgc-panel-header')) document.getElementById('jgc-custom-header').innerHTML = this.panelHeader;
+          if (document.getElementById('jgc-panel-footer')) document.getElementById('jgc-custom-footer').innerHTML = this.panelFooter;
           document.getElementById('closePreferencePanel').addEventListener('click', function () {
             return _this10.closePreferencePanel();
           });
@@ -1125,26 +1137,18 @@
       }
       /**
       * UTILITY
-      * Check if a value is null, undefined or ''
-      */
-
-    }, {
-      key: "isEmpty",
-      value: function isEmpty(value) {
-        return value === null || typeof value === 'undefined' || value === '';
-      }
-      /**
-      * UTILITY
-      * Check if a value is a string
+      * Checking whether a value is a string or an object (for translations)
       */
 
     }, {
       key: "isString",
       value: function isString(value, key) {
         if (typeof value === 'string' || value instanceof String) {
-          return value;
+          return value.escape();
+        } else if (_typeof(value) === 'object' || value instanceof Object) {
+          return value[this.localeString].escape();
         } else {
-          throw ": \"".concat(key, "\" is not valid, must be a string.");
+          throw ": \"".concat(key, "\" is not valid, must be a string or an object.");
         }
       }
       /**
@@ -1155,8 +1159,8 @@
     }, {
       key: "isBoolean",
       value: function isBoolean(value, key) {
-        if (typeof value == "boolean") {
-          return value;
+        if (value != "undefined" && typeof value == 'boolean') {
+          return true;
         } else {
           throw ": \"".concat(key, "\" is not valid, must be a boolean.");
         }
@@ -2296,7 +2300,6 @@
             _data$banner15,
             _data$banner16,
             _data$banner17,
-            _data$banner18,
             _this$customStyle51,
             _this$customStyle52,
             _this$customStyle53,
@@ -2316,7 +2319,11 @@
             _this$customStyle67,
             _this$customStyle68,
             _this20 = this;
-        data.locale ? this.locale = new Languages(data.locale.escape()) : this.locale = new Languages('en');
+
+        if (data.locale) {
+          this.locale = new Languages(data.locale.escape()) || new Languages('en');
+          this.localeString = data.locale;
+        }
 
         if (data.autoMode && this.isBoolean(data.autoMode, "autoMode")) {
           var checkPreferences = this.getCookie('JgcPreferences');
@@ -2359,7 +2366,7 @@
           privacyLink: data.privacyLink.escape() || ''
         }; // Cookie duration
 
-        this.cookieTimeout = !this.isEmpty(data.cookieDuration) ? data.cookieDuration : 360; // Tailwind Prefix
+        this.cookieTimeout = data.cookieDuration ? data.cookieDuration : 360; // Tailwind Prefix
 
         if (data.tailwindPrefix) {
           this.tailwindPrefix = data.tailwindPrefix;
@@ -2376,46 +2383,46 @@
 
 
         this.text = {
-          acceptSelectedText: !this.isEmpty((_data$text = data.text) === null || _data$text === void 0 ? void 0 : _data$text.acceptSelectedText) ? this.isString(data.text.acceptSelectedText.escape(), "acceptSelectedText") : this.locale.acceptSelectedText,
-          acceptText: !this.isEmpty((_data$text2 = data.text) === null || _data$text2 === void 0 ? void 0 : _data$text2.acceptText) ? this.isString(data.text.acceptText.escape(), "acceptText") : this.locale.acceptText,
-          bannerLinkLabel: !this.isEmpty((_data$text3 = data.text) === null || _data$text3 === void 0 ? void 0 : _data$text3.bannerLinkLabel) ? this.isString(data.text.bannerLinkLabel.escape(), "bannerLinkLabel") : this.locale.bannerLinkLabel,
-          descriptionText: !this.isEmpty((_data$text4 = data.text) === null || _data$text4 === void 0 ? void 0 : _data$text4.descriptionText) ? this.isString(data.text.descriptionText.escape(), "descriptionText") : null,
-          panelTitle: !this.isEmpty((_data$text5 = data.text) === null || _data$text5 === void 0 ? void 0 : _data$text5.panelTitle) ? this.isString(data.text.panelTitle.escape(), "panelTitle") : this.locale.panelTitle,
-          preferencesText: !this.isEmpty((_data$text6 = data.text) === null || _data$text6 === void 0 ? void 0 : _data$text6.preferencesText) ? this.isString(data.text.preferencesText.escape(), "preferencesText") : this.locale.preferencesText,
-          rejectText: !this.isEmpty((_data$text7 = data.text) === null || _data$text7 === void 0 ? void 0 : _data$text7.rejectText) ? this.isString(data.text.rejectText.escape(), "rejectText") : this.locale.rejectText,
-          saveButton: !this.isEmpty((_data$text8 = data.text) === null || _data$text8 === void 0 ? void 0 : _data$text8.saveButton) ? this.isString(data.text.saveButton.escape(), "saveButton") : this.locale.saveAndContinue,
-          saveAllButton: !this.isEmpty((_data$text9 = data.text) === null || _data$text9 === void 0 ? void 0 : _data$text9.saveAllButton) ? this.isString(data.text.saveAllButton.escape(), "saveAllButton") : this.locale.saveAndContinueAcceptAll,
-          servicesTag: !this.isEmpty((_data$text10 = data.text) === null || _data$text10 === void 0 ? void 0 : _data$text10.servicesTag) ? this.isString(data.text.servicesTag.escape(), "servicesTag") : this.locale.servicesText
+          acceptSelectedText: (_data$text = data.text) !== null && _data$text !== void 0 && _data$text.acceptSelectedText ? this.isString(data.text.acceptSelectedText, "acceptSelectedText") : this.locale.acceptSelectedText,
+          acceptText: (_data$text2 = data.text) !== null && _data$text2 !== void 0 && _data$text2.acceptText ? this.isString(data.text.acceptText, "acceptText") : this.locale.acceptText,
+          bannerLinkLabel: !((_data$text3 = data.text) !== null && _data$text3 !== void 0 && _data$text3.bannerLinkLabel) ? this.isString(data.text.bannerLinkLabel, "bannerLinkLabel") : this.locale.bannerLinkLabel,
+          descriptionText: !((_data$text4 = data.text) !== null && _data$text4 !== void 0 && _data$text4.descriptionText) ? this.isString(data.text.descriptionText, "descriptionText") : null,
+          panelTitle: !((_data$text5 = data.text) !== null && _data$text5 !== void 0 && _data$text5.panelTitle) ? this.isString(data.text.panelTitle, "panelTitle") : this.locale.panelTitle,
+          preferencesText: !((_data$text6 = data.text) !== null && _data$text6 !== void 0 && _data$text6.preferencesText) ? this.isString(data.text.preferencesText, "preferencesText") : this.locale.preferencesText,
+          rejectText: !((_data$text7 = data.text) !== null && _data$text7 !== void 0 && _data$text7.rejectText) ? this.isString(data.text.rejectText, "rejectText") : this.locale.rejectText,
+          saveButton: !((_data$text8 = data.text) !== null && _data$text8 !== void 0 && _data$text8.saveButton) ? this.isString(data.text.saveButton, "saveButton") : this.locale.saveAndContinue,
+          saveAllButton: !((_data$text9 = data.text) !== null && _data$text9 !== void 0 && _data$text9.saveAllButton) ? this.isString(data.text.saveAllButton, "saveAllButton") : this.locale.saveAndContinueAcceptAll,
+          servicesTag: !((_data$text10 = data.text) !== null && _data$text10 !== void 0 && _data$text10.servicesTag) ? this.isString(data.text.servicesTag, "servicesTag") : this.locale.servicesText
         }; // Banner config & style 
 
         this.bannerConfig = {
-          animation: !this.isEmpty((_data$banner = data.banner) === null || _data$banner === void 0 ? void 0 : _data$banner.animation) ? this.isBoolean(data.banner.animation, "animation") : true,
-          backgroundColor: !this.isEmpty((_data$banner2 = data.banner) === null || _data$banner2 === void 0 ? void 0 : _data$banner2.backgroundColor) ? this.isString(data.banner.backgroundColor.escape(), "backgroundColor") : this.checkTailwindPrefix('bg-white dark:bg-gray-800'),
-          backgroundDark: !this.isEmpty((_data$banner3 = data.banner) === null || _data$banner3 === void 0 ? void 0 : _data$banner3.backgroundDark) ? this.isBoolean(data.banner.backgroundDark, "backgroundDark") : false,
-          backgroundImage: !this.isEmpty((_data$banner4 = data.banner) === null || _data$banner4 === void 0 ? void 0 : _data$banner4.backgroundImage) ? this.isString(data.banner.backgroundImage.escape(), "backgroundImage") : null,
-          closeButton: !this.isEmpty((_data$banner5 = data.banner) === null || _data$banner5 === void 0 ? void 0 : _data$banner5.closeButton) ? this.isBoolean(data.banner.closeButton, "closeButton") : true,
-          closeButtonAccept: !this.isEmpty((_data$banner6 = data.banner) === null || _data$banner6 === void 0 ? void 0 : _data$banner6.closeButtonAccept) ? this.isBoolean(data.banner.closeButtonAccept, "closeButtonAccept") : false,
-          disableReject: !this.isEmpty((_data$banner7 = data.banner) === null || _data$banner7 === void 0 ? void 0 : _data$banner7.disableReject) ? this.isBoolean(data.banner.disableReject, "disableReject") : false,
-          icon: !this.isEmpty((_data$banner8 = data.banner) === null || _data$banner8 === void 0 ? void 0 : _data$banner8.icon) ? this.isString(data.banner.icon.escape(), "icon") : null,
-          iconDark: !this.isEmpty((_data$banner9 = data.banner) === null || _data$banner9 === void 0 ? void 0 : _data$banner9.iconDark) ? this.isString(data.banner.iconDark.escape(), "iconDark") : null,
-          innerBackgroundImage: !this.isEmpty((_data$banner10 = data.banner) === null || _data$banner10 === void 0 ? void 0 : _data$banner10.innerBackgroundImage) ? this.isString(data.banner.innerBackgroundImage.escape(), "innerBackgroundImage") : null,
-          logo: !this.isEmpty((_data$banner11 = data.banner) === null || _data$banner11 === void 0 ? void 0 : _data$banner11.logo) ? this.isString(data.banner.logo.escape(), "logo") : undefined,
-          logoClasses: !this.isEmpty((_data$banner12 = data.banner) === null || _data$banner12 === void 0 ? void 0 : _data$banner12.logoClasses) ? this.isString(data.banner.logoClasses, "logoClasses") : undefined,
-          maxWidth: !this.isEmpty((_data$banner13 = data.banner) === null || _data$banner13 === void 0 ? void 0 : _data$banner13.maxWidth) ? this.isString(data.banner.maxWidth, "maxWidth") : undefined,
-          onAccept: !this.isEmpty((_data$banner14 = data.banner) === null || _data$banner14 === void 0 ? void 0 : _data$banner14.onAccept) ? this.onAccept = this.isFunction(data.banner.onAccept, "onAccept") : null,
-          onReject: !this.isEmpty((_data$banner15 = data.banner) === null || _data$banner15 === void 0 ? void 0 : _data$banner15.onReject) ? this.onReject = this.isFunction(data.banner.onReject, "onReject") : null,
-          position: !this.isEmpty((_data$banner16 = data.banner) === null || _data$banner16 === void 0 ? void 0 : _data$banner16.position) ? this.isString(data.banner.position.escape()) : undefined,
-          shortText: !this.isEmpty((_data$banner17 = data.banner) === null || _data$banner17 === void 0 ? void 0 : _data$banner17.shortText) && this.isBoolean(data.banner.shortText, "shortText") ? this.locale.acceptShortText : this.acceptText,
-          title: !this.isEmpty((_data$banner18 = data.banner) === null || _data$banner18 === void 0 ? void 0 : _data$banner18.title) ? this.isString(data.banner.title.escape(), "title") : 'Cookies'
+          animation: this.isBoolean(data.banner.animation, "animation") ? data.banner.animation : true,
+          backgroundColor: (_data$banner = data.banner) !== null && _data$banner !== void 0 && _data$banner.backgroundColor ? this.isString(data.banner.backgroundColor, "backgroundColor") : this.checkTailwindPrefix('bg-white dark:bg-gray-800'),
+          backgroundDark: (_data$banner2 = data.banner) !== null && _data$banner2 !== void 0 && _data$banner2.backgroundDark ? this.isBoolean(data.banner.backgroundDark, "backgroundDark") : false,
+          backgroundImage: (_data$banner3 = data.banner) !== null && _data$banner3 !== void 0 && _data$banner3.backgroundImage ? this.isString(data.banner.backgroundImage, "backgroundImage") : null,
+          closeButton: (_data$banner4 = data.banner) !== null && _data$banner4 !== void 0 && _data$banner4.closeButton ? this.isBoolean(data.banner.closeButton, "closeButton") : true,
+          closeButtonAccept: (_data$banner5 = data.banner) !== null && _data$banner5 !== void 0 && _data$banner5.closeButtonAccept ? this.isBoolean(data.banner.closeButtonAccept, "closeButtonAccept") : false,
+          disableReject: (_data$banner6 = data.banner) !== null && _data$banner6 !== void 0 && _data$banner6.disableReject ? this.isBoolean(data.banner.disableReject, "disableReject") : false,
+          icon: (_data$banner7 = data.banner) !== null && _data$banner7 !== void 0 && _data$banner7.icon ? this.isString(data.banner.icon, "icon") : null,
+          iconDark: (_data$banner8 = data.banner) !== null && _data$banner8 !== void 0 && _data$banner8.iconDark ? this.isString(data.banner.iconDark, "iconDark") : null,
+          innerBackgroundImage: (_data$banner9 = data.banner) !== null && _data$banner9 !== void 0 && _data$banner9.innerBackgroundImage ? this.isString(data.banner.innerBackgroundImage, "innerBackgroundImage") : null,
+          logo: (_data$banner10 = data.banner) !== null && _data$banner10 !== void 0 && _data$banner10.logo ? this.isString(data.banner.logo, "logo") : undefined,
+          logoClasses: (_data$banner11 = data.banner) !== null && _data$banner11 !== void 0 && _data$banner11.logoClasses ? this.isString(data.banner.logoClasses, "logoClasses") : undefined,
+          maxWidth: (_data$banner12 = data.banner) !== null && _data$banner12 !== void 0 && _data$banner12.maxWidth ? this.isString(data.banner.maxWidth, "maxWidth") : undefined,
+          onAccept: (_data$banner13 = data.banner) !== null && _data$banner13 !== void 0 && _data$banner13.onAccept ? this.onAccept = this.isFunction(data.banner.onAccept, "onAccept") : null,
+          onReject: (_data$banner14 = data.banner) !== null && _data$banner14 !== void 0 && _data$banner14.onReject ? this.onReject = this.isFunction(data.banner.onReject, "onReject") : null,
+          position: (_data$banner15 = data.banner) !== null && _data$banner15 !== void 0 && _data$banner15.position ? this.isString(data.banner.position) : undefined,
+          shortText: (_data$banner16 = data.banner) !== null && _data$banner16 !== void 0 && _data$banner16.shortText && this.isBoolean(data.banner.shortText, "shortText") ? this.locale.acceptShortText : this.acceptText,
+          title: (_data$banner17 = data.banner) !== null && _data$banner17 !== void 0 && _data$banner17.title ? this.isString(data.banner.title, "title") : 'Cookies'
         }; // Custom text placeholder
 
         if (data.placeholder) {
           var _data$placeholder, _data$placeholder2, _data$placeholder3;
 
           this.placeholder = {
-            classes: !this.isEmpty((_data$placeholder = data.placeholder) === null || _data$placeholder === void 0 ? void 0 : _data$placeholder.classes) && this.isString(data.placeholder.classes.escape(), "placeholder classes"),
-            image: !this.isEmpty((_data$placeholder2 = data.placeholder) === null || _data$placeholder2 === void 0 ? void 0 : _data$placeholder2.image) && this.isString(data.placeholder.image.escape(), "placeholder image"),
-            text: !this.isEmpty((_data$placeholder3 = data.placeholder) === null || _data$placeholder3 === void 0 ? void 0 : _data$placeholder3.text) && this.isString(data.placeholder.text.escape(), "placeholder text")
+            classes: ((_data$placeholder = data.placeholder) === null || _data$placeholder === void 0 ? void 0 : _data$placeholder.classes) && this.isString(data.placeholder.classes, "placeholder classes"),
+            image: ((_data$placeholder2 = data.placeholder) === null || _data$placeholder2 === void 0 ? void 0 : _data$placeholder2.image) && this.isString(data.placeholder.image, "placeholder image"),
+            text: ((_data$placeholder3 = data.placeholder) === null || _data$placeholder3 === void 0 ? void 0 : _data$placeholder3.text) && this.isString(data.placeholder.text, "placeholder text")
           };
         } // Preference Panel
 
@@ -2424,9 +2431,9 @@
           var _data$panel, _data$panel2, _data$panel3;
 
           this.panel = {
-            bgColor: !this.isEmpty((_data$panel = data.panel) === null || _data$panel === void 0 ? void 0 : _data$panel.bgColor) ? this.isString(data.panel.bgColor.escape(), "bgColor") : null,
-            open: !this.isEmpty((_data$panel2 = data.panel) === null || _data$panel2 === void 0 ? void 0 : _data$panel2.open) ? this.isBoolean(data.panel.open, "open") : false,
-            padding: !this.isEmpty((_data$panel3 = data.panel) === null || _data$panel3 === void 0 ? void 0 : _data$panel3.padding) ? this.isBoolean(data.panel.padding, "padding") : false
+            bgColor: (_data$panel = data.panel) !== null && _data$panel !== void 0 && _data$panel.bgColor ? this.isString(data.panel.bgColor, "bgColor") : null,
+            open: (_data$panel2 = data.panel) !== null && _data$panel2 !== void 0 && _data$panel2.open ? this.isBoolean(data.panel.open, "open") : false,
+            padding: (_data$panel3 = data.panel) !== null && _data$panel3 !== void 0 && _data$panel3.padding ? this.isBoolean(data.panel.padding, "padding") : false
           };
         } // Banner style
 
@@ -2435,23 +2442,23 @@
           var _data$style, _data$style2, _data$style3, _data$style4, _data$style5, _data$style6, _data$style7, _data$style8, _data$style9, _data$style10, _data$style11, _data$style12, _data$style13, _data$style14, _data$style15, _data$style16, _data$style17;
 
           this.customStyle = {
-            accept: !this.isEmpty((_data$style = data.style) === null || _data$style === void 0 ? void 0 : _data$style.accept) ? this.isString(data.style.accept.escape(), "accept") : null,
-            bannerText: !this.isEmpty((_data$style2 = data.style) === null || _data$style2 === void 0 ? void 0 : _data$style2.bannerText) ? this.isString(data.style.bannerText.escape(), "bannerText") : null,
-            bannerTitle: !this.isEmpty((_data$style3 = data.style) === null || _data$style3 === void 0 ? void 0 : _data$style3.bannerTitle) ? this.isString(data.style.bannerTitle.escape(), "bannerTitle") : null,
-            closeButton: !this.isEmpty((_data$style4 = data.style) === null || _data$style4 === void 0 ? void 0 : _data$style4.closeButton) ? this.isString(data.style.closeButton.escape(), "services: closeButton") : null,
-            toggles: !this.isEmpty((_data$style5 = data.style) === null || _data$style5 === void 0 ? void 0 : _data$style5.toggles) ? this.isString(data.style.toggles.escape(), "toggles") : null,
-            lockIcon: !this.isEmpty((_data$style6 = data.style) === null || _data$style6 === void 0 ? void 0 : _data$style6.lockIcon) ? this.isString(data.style.lockIcon.escape(), "lockIcon") : null,
-            panelHeader: !this.isEmpty((_data$style7 = data.style) === null || _data$style7 === void 0 ? void 0 : _data$style7.panelHeader) ? this.isString(data.style.panelHeader.escape(), "panelHeader") : null,
-            panelText: !this.isEmpty((_data$style8 = data.style) === null || _data$style8 === void 0 ? void 0 : _data$style8.panelText) ? this.isString(data.style.panelText.escape(), "panelText") : null,
-            panelTitle: !this.isEmpty((_data$style9 = data.style) === null || _data$style9 === void 0 ? void 0 : _data$style9.panelTitle) ? this.isString(data.style.panelTitle.escape(), "classes") : null,
-            preferencesText: !this.isEmpty((_data$style10 = data.style) === null || _data$style10 === void 0 ? void 0 : _data$style10.preferencesText) ? this.isString(data.style.preferencesText.escape(), "services: preferencesText") : null,
-            privacyLink: !this.isEmpty((_data$style11 = data.style) === null || _data$style11 === void 0 ? void 0 : _data$style11.privacyLink) ? this.isString(data.style.privacyLink.escape(), "services: privacyLink") : null,
-            reject: !this.isEmpty((_data$style12 = data.style) === null || _data$style12 === void 0 ? void 0 : _data$style12.reject) ? this.isString(data.style.reject.escape(), "reject") : null,
-            saveButton: !this.isEmpty((_data$style13 = data.style) === null || _data$style13 === void 0 ? void 0 : _data$style13.saveButton) ? this.isString(data.style.saveButton.escape(), "classes") : null,
-            saveAllButton: !this.isEmpty((_data$style14 = data.style) === null || _data$style14 === void 0 ? void 0 : _data$style14.saveAllButton) ? this.isString(data.style.saveAllButton.escape(), "classes") : null,
-            servicesText: !this.isEmpty((_data$style15 = data.style) === null || _data$style15 === void 0 ? void 0 : _data$style15.servicesText) ? this.isString(data.style.servicesText.escape(), "services: servicesText") : null,
-            servicesTag: !this.isEmpty((_data$style16 = data.style) === null || _data$style16 === void 0 ? void 0 : _data$style16.servicesTag) ? this.isString(data.style.servicesTag.escape(), "services: servicesTag") : null,
-            stripes: !this.isEmpty((_data$style17 = data.style) === null || _data$style17 === void 0 ? void 0 : _data$style17.stripes) ? this.isString(data.style.stripes.escape(), "stripes: classes") : null
+            accept: (_data$style = data.style) !== null && _data$style !== void 0 && _data$style.accept ? this.isString(data.style.accept, "accept") : null,
+            bannerText: (_data$style2 = data.style) !== null && _data$style2 !== void 0 && _data$style2.bannerText ? this.isString(data.style.bannerText, "bannerText") : null,
+            bannerTitle: (_data$style3 = data.style) !== null && _data$style3 !== void 0 && _data$style3.bannerTitle ? this.isString(data.style.bannerTitle, "bannerTitle") : null,
+            closeButton: (_data$style4 = data.style) !== null && _data$style4 !== void 0 && _data$style4.closeButton ? this.isString(data.style.closeButton, "services: closeButton") : null,
+            toggles: (_data$style5 = data.style) !== null && _data$style5 !== void 0 && _data$style5.toggles ? this.isString(data.style.toggles, "toggles") : null,
+            lockIcon: (_data$style6 = data.style) !== null && _data$style6 !== void 0 && _data$style6.lockIcon ? this.isString(data.style.lockIcon, "lockIcon") : null,
+            panelHeader: (_data$style7 = data.style) !== null && _data$style7 !== void 0 && _data$style7.panelHeader ? this.isString(data.style.panelHeader, "panelHeader") : null,
+            panelText: (_data$style8 = data.style) !== null && _data$style8 !== void 0 && _data$style8.panelText ? this.isString(data.style.panelText, "panelText") : null,
+            panelTitle: (_data$style9 = data.style) !== null && _data$style9 !== void 0 && _data$style9.panelTitle ? this.isString(data.style.panelTitle, "classes") : null,
+            preferencesText: (_data$style10 = data.style) !== null && _data$style10 !== void 0 && _data$style10.preferencesText ? this.isString(data.style.preferencesText, "services: preferencesText") : null,
+            privacyLink: (_data$style11 = data.style) !== null && _data$style11 !== void 0 && _data$style11.privacyLink ? this.isString(data.style.privacyLink, "services: privacyLink") : null,
+            reject: (_data$style12 = data.style) !== null && _data$style12 !== void 0 && _data$style12.reject ? this.isString(data.style.reject, "reject") : null,
+            saveButton: (_data$style13 = data.style) !== null && _data$style13 !== void 0 && _data$style13.saveButton ? this.isString(data.style.saveButton, "classes") : null,
+            saveAllButton: (_data$style14 = data.style) !== null && _data$style14 !== void 0 && _data$style14.saveAllButton ? this.isString(data.style.saveAllButton, "classes") : null,
+            servicesText: (_data$style15 = data.style) !== null && _data$style15 !== void 0 && _data$style15.servicesText ? this.isString(data.style.servicesText, "services: servicesText") : null,
+            servicesTag: (_data$style16 = data.style) !== null && _data$style16 !== void 0 && _data$style16.servicesTag ? this.isString(data.style.servicesTag, "services: servicesTag") : null,
+            stripes: (_data$style17 = data.style) !== null && _data$style17 !== void 0 && _data$style17.stripes ? this.isString(data.style.stripes, "stripes: classes") : null
           };
         } // Cookie Categories
 
@@ -2460,17 +2467,13 @@
           this.getCustomCookies = {};
 
           for (var _i17 = 0, _Object$keys2 = Object.keys(data.cookies); _i17 < _Object$keys2.length; _i17++) {
-            var _a = _Object$keys2[_i17];
+            var jgcTag = _Object$keys2[_i17];
 
-            for (var _i18 = 0, _Object$entries13 = Object.entries(data.cookies[_a]); _i18 < _Object$entries13.length; _i18++) {
+            for (var _i18 = 0, _Object$entries13 = Object.entries(data.cookies[jgcTag]); _i18 < _Object$entries13.length; _i18++) {
               var _Object$entries13$_i = _slicedToArray(_Object$entries13[_i18], 1),
-                  title = _Object$entries13$_i[0];
+                  objKey = _Object$entries13$_i[0];
 
-              if (title == 'title') {
-                data.cookies[_a]['title'] = data.cookies[_a]['title'].escape();
-              } else if (title == 'description') {
-                data.cookies[_a]['description'] = data.cookies[_a]['description'].escape();
-              }
+              data.cookies[jgcTag][objKey] = this.isString(data.cookies[jgcTag][objKey]);
             }
           }
 
@@ -2478,7 +2481,7 @@
         } // Activations
 
 
-        this.activate = !this.isEmpty(data.activate) ? data.activate : null; // Default button styles
+        this.activate = data.activate ? data.activate : null; // Default button styles
 
         this.style = {
           yesCookies: "".concat((_this$customStyle51 = this.customStyle) !== null && _this$customStyle51 !== void 0 && _this$customStyle51.accept ? this.customStyle.accept : "".concat(this.checkTailwindPrefix('text-green-800 dark:text-green-300 bg-green-50 hover:bg-green-100 transition-all duration-300 dark:bg-green-900 ring-1 ring-green-200 px-2 py-0.5 text-xs uppercase font-bold items-center rounded my-2'))),
