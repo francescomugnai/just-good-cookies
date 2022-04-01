@@ -216,7 +216,7 @@
       @license
       JustGoodCookies
       Created by Francesco Mugnai 
-      2022 - v 0.8.9
+      2022 - v 0.9.0
       Released under MIT License
       If you use this script, you will always remain the sole responsible party, use it at your own risk
       https://github.com/francescomugnai/just-good-cookies
@@ -2302,6 +2302,7 @@
             _data$banner15,
             _data$banner16,
             _data$banner17,
+            _data$banner18,
             _this$customStyle51,
             _this$customStyle52,
             _this$customStyle53,
@@ -2398,24 +2399,24 @@
         }; // Banner config & style 
 
         this.bannerConfig = {
-          animation: this.isBoolean(data.banner.animation, "animation") ? data.banner.animation : true,
-          backgroundColor: (_data$banner = data.banner) !== null && _data$banner !== void 0 && _data$banner.backgroundColor ? this.isString(data.banner.backgroundColor, "backgroundColor") : this.checkTailwindPrefix('bg-white dark:bg-gray-800'),
-          backgroundDark: (_data$banner2 = data.banner) !== null && _data$banner2 !== void 0 && _data$banner2.backgroundDark ? this.isBoolean(data.banner.backgroundDark, "backgroundDark") : false,
-          backgroundImage: (_data$banner3 = data.banner) !== null && _data$banner3 !== void 0 && _data$banner3.backgroundImage ? this.isString(data.banner.backgroundImage, "backgroundImage") : null,
-          closeButton: (_data$banner4 = data.banner) !== null && _data$banner4 !== void 0 && _data$banner4.closeButton ? this.isBoolean(data.banner.closeButton, "closeButton") : true,
-          closeButtonAccept: (_data$banner5 = data.banner) !== null && _data$banner5 !== void 0 && _data$banner5.closeButtonAccept ? this.isBoolean(data.banner.closeButtonAccept, "closeButtonAccept") : false,
-          disableReject: (_data$banner6 = data.banner) !== null && _data$banner6 !== void 0 && _data$banner6.disableReject ? this.isBoolean(data.banner.disableReject, "disableReject") : false,
-          icon: (_data$banner7 = data.banner) !== null && _data$banner7 !== void 0 && _data$banner7.icon ? this.isString(data.banner.icon, "icon") : null,
-          iconDark: (_data$banner8 = data.banner) !== null && _data$banner8 !== void 0 && _data$banner8.iconDark ? this.isString(data.banner.iconDark, "iconDark") : null,
-          innerBackgroundImage: (_data$banner9 = data.banner) !== null && _data$banner9 !== void 0 && _data$banner9.innerBackgroundImage ? this.isString(data.banner.innerBackgroundImage, "innerBackgroundImage") : null,
-          logo: (_data$banner10 = data.banner) !== null && _data$banner10 !== void 0 && _data$banner10.logo ? this.isString(data.banner.logo, "logo") : undefined,
-          logoClasses: (_data$banner11 = data.banner) !== null && _data$banner11 !== void 0 && _data$banner11.logoClasses ? this.isString(data.banner.logoClasses, "logoClasses") : undefined,
-          maxWidth: (_data$banner12 = data.banner) !== null && _data$banner12 !== void 0 && _data$banner12.maxWidth ? this.isString(data.banner.maxWidth, "maxWidth") : undefined,
-          onAccept: (_data$banner13 = data.banner) !== null && _data$banner13 !== void 0 && _data$banner13.onAccept ? this.onAccept = this.isFunction(data.banner.onAccept, "onAccept") : null,
-          onReject: (_data$banner14 = data.banner) !== null && _data$banner14 !== void 0 && _data$banner14.onReject ? this.onReject = this.isFunction(data.banner.onReject, "onReject") : null,
-          position: (_data$banner15 = data.banner) !== null && _data$banner15 !== void 0 && _data$banner15.position ? this.isString(data.banner.position) : undefined,
-          shortText: (_data$banner16 = data.banner) !== null && _data$banner16 !== void 0 && _data$banner16.shortText && this.isBoolean(data.banner.shortText, "shortText") ? this.locale.acceptShortText : this.acceptText,
-          title: (_data$banner17 = data.banner) !== null && _data$banner17 !== void 0 && _data$banner17.title ? this.isString(data.banner.title, "title") : 'Cookies'
+          animation: this.isBoolean((_data$banner = data.banner) === null || _data$banner === void 0 ? void 0 : _data$banner.animation, "animation") ? data.banner.animation : true,
+          backgroundColor: (_data$banner2 = data.banner) !== null && _data$banner2 !== void 0 && _data$banner2.backgroundColor ? this.isString(data.banner.backgroundColor, "backgroundColor") : this.checkTailwindPrefix('bg-white dark:bg-gray-800'),
+          backgroundDark: (_data$banner3 = data.banner) !== null && _data$banner3 !== void 0 && _data$banner3.backgroundDark ? this.isBoolean(data.banner.backgroundDark, "backgroundDark") : false,
+          backgroundImage: (_data$banner4 = data.banner) !== null && _data$banner4 !== void 0 && _data$banner4.backgroundImage ? this.isString(data.banner.backgroundImage, "backgroundImage") : null,
+          closeButton: (_data$banner5 = data.banner) !== null && _data$banner5 !== void 0 && _data$banner5.closeButton ? this.isBoolean(data.banner.closeButton, "closeButton") : true,
+          closeButtonAccept: (_data$banner6 = data.banner) !== null && _data$banner6 !== void 0 && _data$banner6.closeButtonAccept ? this.isBoolean(data.banner.closeButtonAccept, "closeButtonAccept") : false,
+          disableReject: (_data$banner7 = data.banner) !== null && _data$banner7 !== void 0 && _data$banner7.disableReject ? this.isBoolean(data.banner.disableReject, "disableReject") : false,
+          icon: (_data$banner8 = data.banner) !== null && _data$banner8 !== void 0 && _data$banner8.icon ? this.isString(data.banner.icon, "icon") : null,
+          iconDark: (_data$banner9 = data.banner) !== null && _data$banner9 !== void 0 && _data$banner9.iconDark ? this.isString(data.banner.iconDark, "iconDark") : null,
+          innerBackgroundImage: (_data$banner10 = data.banner) !== null && _data$banner10 !== void 0 && _data$banner10.innerBackgroundImage ? this.isString(data.banner.innerBackgroundImage, "innerBackgroundImage") : null,
+          logo: (_data$banner11 = data.banner) !== null && _data$banner11 !== void 0 && _data$banner11.logo ? this.isString(data.banner.logo, "logo") : undefined,
+          logoClasses: (_data$banner12 = data.banner) !== null && _data$banner12 !== void 0 && _data$banner12.logoClasses ? this.isString(data.banner.logoClasses, "logoClasses") : undefined,
+          maxWidth: (_data$banner13 = data.banner) !== null && _data$banner13 !== void 0 && _data$banner13.maxWidth ? this.isString(data.banner.maxWidth, "maxWidth") : undefined,
+          onAccept: (_data$banner14 = data.banner) !== null && _data$banner14 !== void 0 && _data$banner14.onAccept ? this.onAccept = this.isFunction(data.banner.onAccept, "onAccept") : null,
+          onReject: (_data$banner15 = data.banner) !== null && _data$banner15 !== void 0 && _data$banner15.onReject ? this.onReject = this.isFunction(data.banner.onReject, "onReject") : null,
+          position: (_data$banner16 = data.banner) !== null && _data$banner16 !== void 0 && _data$banner16.position ? this.isString(data.banner.position) : undefined,
+          shortText: (_data$banner17 = data.banner) !== null && _data$banner17 !== void 0 && _data$banner17.shortText && this.isBoolean(data.banner.shortText, "shortText") ? this.locale.acceptShortText : this.acceptText,
+          title: (_data$banner18 = data.banner) !== null && _data$banner18 !== void 0 && _data$banner18.title ? this.isString(data.banner.title, "title") : 'Cookies'
         }; // Custom text placeholder
 
         if (data.placeholder) {

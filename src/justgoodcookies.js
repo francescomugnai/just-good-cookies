@@ -2,7 +2,7 @@
     @license
     JustGoodCookies
     Created by Francesco Mugnai 
-    2022 - v 0.8.9
+    2022 - v 0.9.0
     Released under MIT License
     If you use this script, you will always remain the sole responsible party, use it at your own risk
     https://github.com/francescomugnai/just-good-cookies
@@ -1944,7 +1944,7 @@ class JustGoodCookies {
   
     // Banner config & style 
     this.bannerConfig = {
-      animation: this.isBoolean(data.banner.animation, "animation") ? data.banner.animation : true,
+      animation: this.isBoolean(data.banner?.animation, "animation") ? data.banner.animation : true,
       backgroundColor: data.banner?.backgroundColor ? this.isString(data.banner.backgroundColor, "backgroundColor") : this.checkTailwindPrefix('bg-white dark:bg-gray-800'),
       backgroundDark: data.banner?.backgroundDark ?this.isBoolean( data.banner.backgroundDark, "backgroundDark") : false,
       backgroundImage: data.banner?.backgroundImage ? this.isString(data.banner.backgroundImage, "backgroundImage") : null,
