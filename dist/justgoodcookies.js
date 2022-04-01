@@ -1161,6 +1161,8 @@
       value: function isBoolean(value, key) {
         if (value != "undefined" && typeof value == 'boolean') {
           return true;
+        } else if (value != "undefined") {
+          return false;
         } else {
           throw ": \"".concat(key, "\" is not valid, must be a boolean.");
         }

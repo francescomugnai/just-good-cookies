@@ -733,7 +733,10 @@ class JustGoodCookies {
   isBoolean(value, key){
     if(value != "undefined" && typeof value == 'boolean'){
       return true
-    } else {
+    } else if(value != "undefined"){
+      return false
+    }
+     else {
       throw `: "${key}" is not valid, must be a boolean.`
     }
   }
