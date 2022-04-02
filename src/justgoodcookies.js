@@ -2,7 +2,7 @@
     @license
     JustGoodCookies
     Created by Francesco Mugnai 
-    2022 - v 0.9.0
+    2022 - v 0.9.1
     Released under MIT License
     If you use this script, you will always remain the sole responsible party, use it at your own risk
     https://github.com/francescomugnai/just-good-cookies
@@ -636,11 +636,11 @@ class JustGoodCookies {
     if(!panelExists) {
       let cookiePanel = document.createElement("div");
       cookiePanel.innerHTML = `
-      <div id="preferenceDiv" style="background-color: rgba(0,0,0,0.6);z-index:9999 !important;" class="${this.checkTailwindPrefix(' w-full min-h-screen top-0 fixed flex flex-col p-6 shadow-2xl items-center justify-center mx-auto transition duration-700 ease-in-out')} ${ this.panelHeader ? '' : null } ">
-            <div id="jgc-custom-header" class="${this.checkTailwindPrefix('w-full')}"></div>
-              <div class="${ this.panel?.bgColor ? this.panel.bgColor : `${this.checkTailwindPrefix('bg-white dark:bg-gray-800')}`} ${this.checkTailwindPrefix('max-w-3xl w-full')} ${ this.panel?.padding == false ? '' : `${this.checkTailwindPrefix('p-2')}` }">
+      <div id="preferenceDiv" style="background-color: rgba(0,0,0,0.6);z-index:9999 !important;" class="${this.checkTailwindPrefix('w-full min-h-screen top-0 fixed flex flex-col p-6 shadow-2xl items-center justify-center mx-auto transition duration-700 ease-in-out')} ${ this.panelHeader ? '' : null } ">
+            ${ this.panelHeader ? `<div id="jgc-custom-header" class="${this.checkTailwindPrefix('w-full')}"></div>` : '' }
+              <div class="${ this.panel?.bgColor ? this.panel.bgColor : `${this.customStyle?.preferenceDiv ? this.customStyle.preferenceDiv : this.checkTailwindPrefix('bg-white dark:bg-gray-800 max-w-3xl w-full')}`} ${ this.panel?.padding == false ? '' : `${this.checkTailwindPrefix('p-2')}` }">
                 <div class="${ this.customStyle?.panelHeader ? this.customStyle.panelHeader : `${this.checkTailwindPrefix('md:flex justify-between px-4 py-4')}` }">
-                  <h2 class="${ this.customStyle?.panelTitle ? this.customStyle.panelTitle : this.checkTailwindPrefix('dark:text-gray-300 leading-snug') } ${this.checkTailwindPrefix('text-xl font-bold')}">
+                  <h2 class="${ this.customStyle?.panelTitle ? this.customStyle.panelTitle : this.checkTailwindPrefix('dark:text-gray-300 leading-snug text-xl font-bold m-0 p-0')}">
                     ${ this.text?.panelTitle ? this.text.panelTitle : '' } 
                   </h2>
                   <div class="${this.checkTailwindPrefix('space-x-1 md:mt-0 mt-4')}">
@@ -658,13 +658,13 @@ class JustGoodCookies {
                   </div> 
                 </div>
               </div>
-              <div id="jgc-custom-footer" class="${this.checkTailwindPrefix('w-full')}"></div>
+              ${ this.panelFooter ? `<div id="jgc-custom-footer" class="${this.checkTailwindPrefix('w-full')}"></div>` : '' }
             </div>
       </div>
       `;
       document.body.appendChild(cookiePanel);
-      if(document.getElementById('jgc-panel-header')) document.getElementById('jgc-custom-header').innerHTML = this.panelHeader 
-      if(document.getElementById('jgc-panel-footer')) document.getElementById('jgc-custom-footer').innerHTML = this.panelFooter
+      if(this.panelHeader) document.getElementById('jgc-custom-header').innerHTML = this.panelHeader 
+      if(this.panelFooter) document.getElementById('jgc-custom-footer').innerHTML = this.panelFooter
       document.getElementById('closePreferencePanel').addEventListener('click', () => this.closePreferencePanel()) 
       document.getElementById('closePreferencePanelAcceptAll').addEventListener('click', () => this.closePreferencePanelAndSaveAll())
     } else {
@@ -1193,7 +1193,7 @@ class JustGoodCookies {
                       ${this.returnIcon()}
                       <h4 class="${ this.customStyle?.bannerTitle ?? this.checkTailwindPrefix('text-xl font-bold dark:text-white') }">${ this.bannerConfig.title }</h4>
                     </div>  
-                    ${ this.bannerConfig.closeButton ? `<button id="jgc-close-button" class="${ this.bannerConfig.logo ? `${this.checkTailwindPrefix('absolute top-2 right-4')}`: `` }   ${this.customStyle?.closeButton ? `${this.customStyle.closeButton}` : `${this.checkTailwindPrefix('dark:text-white text-xl ml-auto')}`}">&times;</button>` : '' }
+                    ${ this.bannerConfig.closeButton ? `<button id="jgc-close-button" class="${ this.bannerConfig.logo ? `${this.checkTailwindPrefix('absolute top-2 right-4')}`: `` }   ${this.customStyle?.closeButton ? `${this.customStyle.closeButton}` : `${this.checkTailwindPrefix('dark:text-white text-xl ml-auto m-0 p-0 bg-transparent')}`}">&times;</button>` : '' }
                 </div>
                 <div class="${ this.customStyle?.bannerText ? this.customStyle.bannerText : this.checkTailwindPrefix('dark:text-white') } ${ this.bannerConfig.innerBackgroundImage ? this.checkTailwindPrefix('px-6') : ''}">
                   <div>${ this.bannerText ? this.bannerText : `${ this.text.descriptionText ? this.text.descriptionText : this.locale.bannerDescription }` }<br/></div>
@@ -1233,7 +1233,7 @@ class JustGoodCookies {
               ${ this.bannerConfig.backgroundImage ? `${this.bannerConfig.backgroundColor} ${this.checkTailwindPrefix('p-6')}` : this.checkTailwindPrefix('p-4') }">
               ${ this.returnLogo() }
               ${ this.bannerConfig.closeButton ? `<button id="jgc-close-button" class="${this.customStyle?.closeButton ? this.customStyle.closeButton : this.checkTailwindPrefix('text-white')} ${this.customStyle?.closeButton ? this.customStyle.closeButton : this.checkTailwindPrefix('bg-black dark:bg-white')}  
-              ${this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute -top-5 right-20 transform -translate-y-4 dark:text-black dark:ring-2 dark:ring-gray-800')}">
+              ${this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute -top-5 right-20 transform -translate-y-4 dark:text-black dark:ring-2 dark:ring-gray-800 m-0 p-0')}">
               &times;</button>`: ''}
                 <div class="${this.checkTailwindPrefix('flex items-center space-x-2 mb-4 dark:text-white')}">
                   ${this.returnIcon()}
@@ -1288,7 +1288,7 @@ class JustGoodCookies {
                <div class="${this.checkTailwindPrefix('col-span-2 flex items-center justify-center')}">
                   ${ this.bannerConfig.closeButton ? `<button id="jgc-close-button" class="${this.customStyle?.customStyle ? this.customStyle.customStyle : this.checkTailwindPrefix('text-white')} 
                   ${ this.customStyle?.closeButton ? this.customStyle.closeButton : this.checkTailwindPrefix('bg-black')} 
-                  ${ this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute -top-4 right-6 transform -translate-y-4')}">&times;</button>`: ''}
+                  ${ this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute -top-4 right-6 transform -translate-y-4 m-0 p-0')}">&times;</button>`: ''}
                <div class="${ this.checkTailwindPrefix('flex flex-col mt-4 md:mt-0 ') }">
                  <div class="${ this.checkTailwindPrefix('space-x-3 flex') }">
                    <button role="button" tabindex="0" type="button" id="yesCookies" class="${ this.style.yesCookies3 }">${ this.bannerConfig.shortText ? this.bannerConfig.shortText : this.text.acceptText }</button>
@@ -1327,7 +1327,7 @@ class JustGoodCookies {
                   <div class="${this.checkTailwindPrefix('flex flex-col justify-start w-full px-6')} ${ this.bannerConfig.innerBackgroundImage ? this.checkTailwindPrefix('pb-6') : this.checkTailwindPrefix('py-6')} ${this.checkTailwindPrefix('space-x-1"')}>
                   ${ this.returnLogo() }
                   ${ this.bannerConfig.closeButton ? `<button id="jgc-close-button" class="${this.customStyle?.closeButton ? this.customStyle.closeButton : this.checkTailwindPrefix('text-white')} 
-                  ${this.customStyle?.closeButton ? this.customStyle.closeButton : this.checkTailwindPrefix('bg-black')} ${this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute top-0 right-0 transform -translate-y-4 translate-x-2')}">&times;</button>` : ''} 
+                  ${this.customStyle?.closeButton ? this.customStyle.closeButton : this.checkTailwindPrefix('bg-black')} ${this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute top-0 right-0 transform -translate-y-4 translate-x-2 m-0 p-0')}">&times;</button>` : ''} 
                     <div class="${this.checkTailwindPrefix('flex space-x-2 items-center')}">
                     ${this.returnIcon()}
                     <h4 class="${ this.customStyle?.bannerTitle ?? this.checkTailwindPrefix('text-2xl font-bold dark:text-white') }">${ this.bannerConfig.title }</h4>
@@ -1382,7 +1382,7 @@ class JustGoodCookies {
           ${ this.bannerConfig.backgroundImage ? this.checkTailwindPrefix('p-2') : this.checkTailwindPrefix('px-6 items-start justify-center py-8') } 
           ${this.checkTailwindPrefix('sm:w-full md:w-full w-full fixed shadow-2xl  transition duration-700 ease-in-out dark:bg-gray-800 z-[999]')}">
           ${ this.bannerConfig.closeButton ? `<button id="jgc-close-button" class="${this.customStyle?.closeButton ? this.customStyle.closeButton : this.checkTailwindPrefix('text-black dark:text-white')} 
-          ${this.customStyle?.closeButton ? this.customStyle.closeButton : ''} ${this.checkTailwindPrefix('rounded-full text-2xl self-end')}">&times;</button>` : ''}
+          ${this.customStyle?.closeButton ? this.customStyle.closeButton : ''} ${this.checkTailwindPrefix('rounded-full text-2xl self-end m-0 p-0 bg-transparent')}">&times;</button>` : ''}
           ${ this.bannerConfig.innerBackgroundImage ? `<img class="${ this.checkTailwindPrefix('md:rounded-t col-span-1')}" src="${ this.bannerConfig.innerBackgroundImage }" />` : ''  }
               <div class="
               ${ this.bannerConfig.backgroundImage ? `${this.bannerConfig.backgroundColor} ${this.checkTailwindPrefix('w-full p-4')}` : '' } 
@@ -1441,7 +1441,7 @@ class JustGoodCookies {
               <div class="${this.checkTailwindPrefix('p-2')} ${ this.checkTailwindPrefix('md:rounded-xl')  }" 
               style="background-size:cover; background-image:url(${ this.bannerConfig.backgroundImage })">` : ''}
               ${ this.bannerConfig.closeButton ? 
-                `<button id="jgc-close-button" class="${this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute top-4 right-6')} ${this.customStyle?.closeButton ? this.customStyle.closeButton  : this.checkTailwindPrefix('text-white')}">&times;</button>` : ''} 
+                `<button id="jgc-close-button" class="${this.checkTailwindPrefix('rounded-full w-6 h-6 self-end absolute top-4 right-6')} ${this.customStyle?.closeButton ? this.customStyle.closeButton  : this.checkTailwindPrefix('text-white m-0 p-0 bg-transparent')}">&times;</button>` : ''} 
               <div class="${ this.bannerConfig.backgroundColor } 
               ${ this.bannerConfig.innerBackgroundImage ? this.checkTailwindPrefix('pb-4') : this.checkTailwindPrefix('py-4') }
               ${ this.getMaxWidth('max-w-xl') }
@@ -1493,7 +1493,7 @@ class JustGoodCookies {
               ${ this.getMaxWidth('max-w-xl') }
               ${ this.checkTailwindPrefix('translate-y-full origin-bottom fixed bg-opacity-95 right-0 shadow-2xl md:flex md:flex-col md:space-x-1  transition duration-700 ease-in-out z-[999] rounded')}">
               ${ this.bannerConfig.closeButton ? `<button id="jgc-close-button" class="${this.customStyle?.closeButton}  
-              ${ this.checkTailwindPrefix('text-sm bg-gray-800 px-3 py-0.5 rounded-tr-lg rounded-tl-lg  border-t-rounded text-white self-end absolute -top-[8px] right-2 transform -translate-y-4')}">
+              ${ this.checkTailwindPrefix('text-sm bg-gray-800 px-3 py-0.5 rounded-tr-lg rounded-tl-lg  border-t-rounded text-white self-end absolute -top-[8px] right-2 transform -translate-y-4 m-0')}">
               &times;</button>` : '' }
               <div class="${this.checkTailwindPrefix('space-y-6 flex flex-col')}
                 ${ this.bannerConfig.backgroundImage && !this.bannerConfig.innerBackgroundImage ? `${ this.bannerConfig.backgroundColor ?? ''} ${this.checkTailwindPrefix('p-4')}`: ''}
@@ -1988,19 +1988,20 @@ class JustGoodCookies {
         accept: data.style?.accept ? this.isString(data.style.accept, "accept") : null,
         bannerText: data.style?.bannerText ? this.isString(data.style.bannerText, "bannerText") : null,
         bannerTitle: data.style?.bannerTitle ? this.isString(data.style.bannerTitle, "bannerTitle") : null,
-        closeButton: data.style?.closeButton ? this.isString(data.style.closeButton, "services: closeButton") : null, 
+        closeButton: data.style?.closeButton ? this.isString(data.style.closeButton, "closeButton") : null, 
         toggles: data.style?.toggles ? this.isString(data.style.toggles, "toggles") : null,
         lockIcon: data.style?.lockIcon ? this.isString(data.style.lockIcon, "lockIcon") : null,
         panelHeader: data.style?.panelHeader ? this.isString(data.style.panelHeader, "panelHeader") : null, 
         panelText: data.style?.panelText ? this.isString(data.style.panelText, "panelText") : null, 
-        panelTitle:  data.style?.panelTitle ? this.isString(data.style.panelTitle, "classes") : null,
-        preferencesText: data.style?.preferencesText ? this.isString(data.style.preferencesText, "services: preferencesText") : null, 
-        privacyLink: data.style?.privacyLink ? this.isString(data.style.privacyLink, "services: privacyLink") : null, 
+        panelTitle:  data.style?.panelTitle ? this.isString(data.style.panelTitle, "panelTitle") : null,
+        preferenceDiv:  data.style?.preferenceDiv ? this.isString(data.style.preferenceDiv, "preferenceDiv") : null,
+        preferencesText: data.style?.preferencesText ? this.isString(data.style.preferencesText, "preferencesText") : null, 
+        privacyLink: data.style?.privacyLink ? this.isString(data.style.privacyLink, "privacyLink") : null, 
         reject: data.style?.reject ? this.isString(data.style.reject, "reject") : null,
         saveButton: data.style?.saveButton ? this.isString(data.style.saveButton, "classes") : null,
         saveAllButton: data.style?.saveAllButton ? this.isString(data.style.saveAllButton, "classes") : null,
-        servicesText: data.style?.servicesText ? this.isString(data.style.servicesText, "services: servicesText") : null, 
-        servicesTag: data.style?.servicesTag ? this.isString(data.style.servicesTag, "services: servicesTag") : null, 
+        servicesText: data.style?.servicesText ? this.isString(data.style.servicesText, "servicesText") : null, 
+        servicesTag: data.style?.servicesTag ? this.isString(data.style.servicesTag, "servicesTag") : null, 
         stripes: data.style?.stripes ? this.isString(data.style.stripes, "stripes: classes") : null,
       }
     }
@@ -2019,24 +2020,24 @@ class JustGoodCookies {
     
     // Default button styles
     this.style = {
-      yesCookies:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-green-800 dark:text-green-300 bg-green-50 hover:bg-green-100 transition-all duration-300 dark:bg-green-900 ring-1 ring-green-200 px-2 py-0.5 text-xs uppercase font-bold items-center rounded my-2')}`}`,
-      noCookies:`${this.customStyle?.reject ? this.customStyle.reject   : `${this.checkTailwindPrefix('text-red-800 dark:text-red-300 bg-red-50 hover:bg-red-100 transition-all duration-300 dark:bg-red-900 ring-red-200 ring-1 px-2 py-0.5 text-xs uppercase font-bold items-center rounded my-2')}`}`,
-      yesCookies2:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-green-600 bg-transparent ring-green-400 ring-2 px-3 leading-6 text-xs text-center font-medium uppercase transition transition-all duration-300  hover:bg-green-100 focus:shadow-2xl rounded-full')}`}`,
-      noCookies2:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-red-600 bg-transparent ring-red-600 ring-2 px-3 leading-6 text-xs text-center font-medium uppercase transition transition-all duration-300  hover:bg-red-100 focus:shadow-2xl rounded-full')}`}`,
-      yesCookies3:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-green-600 bg-transparent transition transition-all duration-300 ring-green-400 ring-2 px-3 py-2 leading-tight text-xs text-center font-medium uppercase transition hover:bg-green-100 focus:shadow-2xl rounded-full')}`}`,
-      noCookies3:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-red-600 bg-transparent transition transition-all duration-300 ring-red-600 ring-2 px-3 py-2 leading-tight text-xs text-center font-medium uppercase transition hover:bg-red-100 focus:shadow-2xl rounded-full')}`}`,
-      yesCookies4:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-gray-500 dark:text-green-300 px-3 leading-6 text-xs text-center font-bold uppercase transition focus:shadow-2xl tracking-widest rounded-full')}`}`,
-      noCookies4:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-gray-500  dark:text-red-300 px-3 leading-6 text-xs text-center font-bold uppercase transition focus:shadow-2xl tracking-widest rounded-full')}`}`,
-      yesCookies5:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-white dark:text-green-400 px-5 text-sm text-center font-bold uppercase transition focus:shadow-2xl tracking-wide rounded-full')}`}`,
-      noCookies5:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-red-600 dark:text-red-400 px-5 leading-6 text-sm text-center font-bold uppercase transition focus:shadow-2xl tracking-wide rounded-full')}`}`,
-      yesCookies6:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-white dark:text-gray-400 px-12 py-2 text-sm text-center font-semibold uppercase transition focus:shadow-2xl tracking-widest rounded-full')}`}`,
-      yesCookies7:`${this.customStyle?.reject ? this.customStyle.reject : `${this.checkTailwindPrefix('text-gray-600 dark:text-white rounded-full text-xs font-semibold focus:shadow-2xl')}`}`,
-      noCookies7:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-gray-600 dark:text-white text-xs leading-6 font-bold focus:shadow-2xl rounded-full')}`}`,
-      yesCookies8:`${this.customStyle?.reject ? this.customStyle.reject : `${this.checkTailwindPrefix('text-gray-600 group-hover:text-green-600 dark:bg-green-900 py-2 dark:text-green-400 px-5 text-sm text-center font-semibold transition focus:shadow-2xl tracking-wide rounded-full')}`}`,
-      selectedCookies8:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-orange-600 group-hover:text-orange-600 dark:text-orange-400 dark:bg-orange-900 py-2 px-5 text-sm text-center font-semibold transition focus:shadow-2xl tracking-wide rounded-full')}`}`,
-      noCookies8:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-red-600 group-hover:text-red-600 dark:bg-red-900 py-2 dark:text-red-400 px-5 leading-6 text-sm text-center font-semibold transition focus:shadow-2xl tracking-wide rounded-full')}`}`,
-      yesCookies9:`${this.customStyle?.reject ? this.customStyle.reject : `${this.checkTailwindPrefix('text-white bg-black dark:text-gray-100 px-6 py-1 text-xs text-center font-semibold uppercase transition focus:shadow-2xl tracking-widest rounded-full')}`}`,
-      noCookies9:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-red-900 ring-1 ring-red-900 dark:text-red-700 dark:ring-red-700 px-6 py-1 text-xs text-center font-semibold uppercase transition focus:shadow-2xl tracking-widest rounded-full')}`}`,
+      yesCookies:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-green-800 dark:text-green-300 bg-green-50 hover:bg-green-100 transition-all duration-300 dark:bg-green-900 ring-1 ring-green-200 px-2 py-0.5 text-xs uppercase font-bold items-center rounded my-2 border-none')}`}`,
+      noCookies:`${this.customStyle?.reject ? this.customStyle.reject   : `${this.checkTailwindPrefix('text-red-800 dark:text-red-300 bg-red-50 hover:bg-red-100 transition-all duration-300 dark:bg-red-900 ring-red-200 ring-1 px-2 py-0.5 text-xs uppercase font-bold items-center rounded my-2 border-none')}`}`,
+      yesCookies2:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-green-600 bg-transparent ring-green-400 ring-2 px-3 leading-6 text-xs text-center font-medium uppercase transition transition-all duration-300  hover:bg-green-100 focus:shadow-2xl rounded-full border-none')}`}`,
+      noCookies2:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-red-600 bg-transparent ring-red-600 ring-2 px-3 leading-6 text-xs text-center font-medium uppercase transition transition-all duration-300  hover:bg-red-100 focus:shadow-2xl rounded-full border-none')}`}`,
+      yesCookies3:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-green-600 bg-transparent transition transition-all duration-300 ring-green-400 ring-2 px-3 py-2 leading-tight text-xs text-center font-medium uppercase transition hover:bg-green-100 focus:shadow-2xl rounded-full border-none')}`}`,
+      noCookies3:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-red-600 bg-transparent transition transition-all duration-300 ring-red-600 ring-2 px-3 py-2 leading-tight text-xs text-center font-medium uppercase transition hover:bg-red-100 focus:shadow-2xl rounded-full border-none')}`}`,
+      yesCookies4:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-gray-500 dark:text-green-300 px-3 leading-6 text-xs text-center font-bold uppercase transition focus:shadow-2xl tracking-widest rounded-full border-none')}`}`,
+      noCookies4:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-gray-500  dark:text-red-300 px-3 leading-6 text-xs text-center font-bold uppercase transition focus:shadow-2xl tracking-widest rounded-full border-none')}`}`,
+      yesCookies5:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-white dark:text-green-400 px-5 text-sm text-center font-bold uppercase transition focus:shadow-2xl tracking-wide rounded-full border-none')}`}`,
+      noCookies5:`${this.customStyle?.reject ? this.customStyle.reject  : `${this.checkTailwindPrefix('text-red-600 dark:text-red-400 px-5 leading-6 text-sm text-center font-bold uppercase transition focus:shadow-2xl tracking-wide rounded-full border-none')}`}`,
+      yesCookies6:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-white dark:text-gray-400 px-12 py-2 text-sm text-center font-semibold uppercase transition focus:shadow-2xl tracking-widest rounded-full border-none')}`}`,
+      yesCookies7:`${this.customStyle?.reject ? this.customStyle.reject : `${this.checkTailwindPrefix('text-gray-600 dark:text-white rounded-full text-xs font-semibold focus:shadow-2xl border-none')}`}`,
+      noCookies7:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-gray-600 dark:text-white text-xs leading-6 font-bold focus:shadow-2xl rounded-full border-none')}`}`,
+      yesCookies8:`${this.customStyle?.reject ? this.customStyle.reject : `${this.checkTailwindPrefix('text-gray-600 group-hover:text-green-600 dark:bg-green-900 py-2 dark:text-green-400 px-5 text-sm text-center font-semibold transition focus:shadow-2xl tracking-wide rounded-full border-none')}`}`,
+      selectedCookies8:`${this.customStyle?.accept ? this.customStyle.accept : `${this.checkTailwindPrefix('text-orange-600 group-hover:text-orange-600 dark:text-orange-400 dark:bg-orange-900 py-2 px-5 text-sm text-center font-semibold transition focus:shadow-2xl tracking-wide rounded-full border-none')}`}`,
+      noCookies8:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-red-600 group-hover:text-red-600 dark:bg-red-900 py-2 dark:text-red-400 px-5 leading-6 text-sm text-center font-semibold transition focus:shadow-2xl tracking-wide rounded-full border-none')}`}`,
+      yesCookies9:`${this.customStyle?.reject ? this.customStyle.reject : `${this.checkTailwindPrefix('text-white bg-black dark:text-gray-100 px-6 py-1 text-xs text-center font-semibold uppercase transition focus:shadow-2xl tracking-widest rounded-full border-none')}`}`,
+      noCookies9:`${this.customStyle?.accept ? this.customStyle.accept  : `${this.checkTailwindPrefix('text-red-900 ring-1 ring-red-900 dark:text-red-700 dark:ring-red-700 px-6 py-1 text-xs text-center font-semibold uppercase transition focus:shadow-2xl tracking-widest rounded-full border-none')}`}`,
     }
 
     // Let's start the engine
@@ -2062,6 +2063,48 @@ class Languages {
   }
   init() {
     this.locales = {
+      de: {
+        'acceptText': 'Cookies akzeptieren',
+        'acceptSelectedShortText': 'Ausgewählte akzeptieren',
+        'acceptSelectedText': 'Ausgewählte akzeptieren',
+        'acceptShortText': 'Akzeptieren',
+        'bannerDescription': `
+          Wir verwenden Cookies, um Inhalte zu personalisieren, die Benutzerfreundlichkeit zu verbessern und unseren Datenverkehr zu analysieren.
+          Wenn Sie auf "Akzeptieren" klicken, erklären Sie sich mit der Verwendung aller Cookies einverstanden. 
+          Sie können Ihre Einstellungen jederzeit ändern, indem Sie die Cookie-Einstellungen besuchen.
+        `,
+        'bannerShortDescription': 'Diese Website verwendet Cookies.',
+        'bannerLinkLabel': 'Datenschutzbestimmungen',
+        'bannerLinkDescription': 'Lesen Sie mehr in der',
+        'panelTitle': 'Cookies-Einstellungen',
+        'preferencesText': 'Mehr erfahren und individuell anpassen',
+        'rejectShortText': 'Ablehnen',
+        'rejectText': 'Cookies ablehnen',
+        'saveAndContinue': 'Speichern und fortfahren',
+        'saveAndContinueAcceptAll': 'Alle akzeptieren und schließen',
+        'servicesText': 'Inklusive Dienstleistungen',
+      },
+      fr: {
+        'acceptText': 'Accepter les cookies',
+        'acceptSelectedShortText': 'Accepter la sélection',
+        'acceptSelectedText': 'Accepter la sélection',
+        'acceptShortText': 'Accepter',
+        'bannerDescription': `
+          Nous utilisons des cookies pour personnaliser le contenu, améliorer l'expérience utilisateur et analyser notre trafic.
+          En cliquant sur "Accepter", vous consentez à l'utilisation de tous les cookies. 
+          Vous pouvez modifier vos paramètres à tout moment en vous rendant dans les préférences relatives aux cookies.
+        `,
+        'bannerShortDescription': 'Ce site web utilise des cookies.',
+        'bannerLinkLabel': 'politique de confidentialité',
+        'bannerLinkDescription': "Plus d'informations dans le",
+        'panelTitle': 'Préférences en matière de cookies',
+        'preferencesText': 'En savoir plus et personnaliser',
+        'rejectShortText': 'Rejeter',
+        'rejectText': 'Rejeter les cookies',
+        'saveAndContinue': 'Sauvegarder et continuer',
+        'saveAndContinueAcceptAll': 'Accepter tout et fermer',
+        'servicesText': 'Les services proposés sont les suivants',
+      },
       en: {
         'acceptText': 'Accept cookies',
         'acceptSelectedShortText': 'Accept selected',
@@ -2075,13 +2118,34 @@ class Languages {
         'bannerShortDescription': 'This website uses cookies.',
         'bannerLinkLabel': 'privacy policy',
         'bannerLinkDescription': 'Read more in the',
+        'panelTitle': 'Cookies preferences',
         'preferencesText': 'Learn more and customize',
         'rejectShortText': 'Reject',
         'rejectText': 'Reject cookies',
         'saveAndContinue': 'Save and continue',
         'saveAndContinueAcceptAll': 'Accept all and close',
         'servicesText': 'Services included',
-        'panelTitle': 'Cookies preferences',
+      },
+      es: {
+        'acceptText': 'Aceptar cookies',
+        'acceptSelectedShortText': 'Aceptar la selección',
+        'acceptSelectedText': 'Aceptar la selección',
+        'acceptShortText': 'Aceptar',
+        'bannerDescription': `
+          En nuestro sitio utilizamos cookies para personalizar el contenido, mejorar la experiencia del usuario y analizar nuestro tráfico.
+          Al hacer clic en "Aceptar", usted consiente el uso de todas las cookies. 
+          Puede cambiar la configuración en cualquier momento visitando las preferencias de cookies.
+        `,
+        'bannerShortDescription': 'Este sitio web utiliza cookies.',
+        'bannerLinkLabel': 'política de privacidad',
+        'bannerLinkDescription': 'Puede obtener más información en nuestra',
+        'panelTitle': 'Preferencias de las cookies',
+        'preferencesText': 'Más información y personalización',
+        'rejectShortText': 'Rechazar',
+        'rejectText': 'Rechazar cookies',
+        'saveAndContinue': 'Guardar y continuar',
+        'saveAndContinueAcceptAll': 'Aceptar todo y cerrar',
+        'servicesText': 'Servicios incluidos',
       },
       it: {
         'acceptText': 'Accetta i cookie',
@@ -2096,13 +2160,13 @@ class Languages {
         'bannerLinkLabel': 'privacy policy',
         'bannerLinkDescription': 'Per saperne di più riguardo i cookie puoi leggere la',
         'bannerShortDescription': 'Utilizziamo i cookies',
+        'panelTitle': 'Preferenze cookies',
         'preferencesText': 'Gestisci i cookie',
         'rejectShortText': 'Rifiuto',
         'rejectText': 'Rifiuta i cookie',
         'saveAndContinue': 'Salva e chiudi',
         'saveAndContinueAcceptAll': 'Accetta tutti e chiudi',
         'servicesText': 'Servizi inclusi',
-        'panelTitle': 'Preferenze cookies',
       },
     }
   }

@@ -1,5 +1,20 @@
 # Release Notes
 
+<hr/>
+
+## 0.9.1 (2022-04-02)
+
+### What's new
+
+- Added new locales: 🇫🇷 fr, 🇪🇸 es, 🇩🇪 de (but hey, I need your help to improve them)
+- Added a new parameter for the style object: `preferenceDiv` (as you can imagine now you can customize the preference panel div).
+
+### What's improved
+
+- Fixed some minor bugs and added some new CSS classes
+
+<hr>
+
 ## 0.9.0 (2022-04-01)
 
 ### What's new

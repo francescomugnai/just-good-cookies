@@ -7,7 +7,7 @@
 
 <br/>
 
-![npm](https://img.shields.io/badge/Just%20Good%20Cookies-0.9.0-%23abe1be) ![GitHub top language](https://img.shields.io/github/languages/top/francescomugnai/just-good-cookies?color=%23bbf7d0) ![npm bundle size](https://img.shields.io/bundlephobia/min/just-good-cookies?color=%23bbf7d0) ![NPM](https://img.shields.io/npm/l/just-good-cookies?color=%23bbf7d0) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/francescomugnai/just-good-cookies/CodeQL?color=%23bbf7d0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/francescomugnai/just-good-cookies?color=%23bbf7d0)
+![npm](https://img.shields.io/badge/Just%20Good%20Cookies-0.9.1-%23abe1be) ![GitHub top language](https://img.shields.io/github/languages/top/francescomugnai/just-good-cookies?color=%23bbf7d0) ![npm bundle size](https://img.shields.io/bundlephobia/min/just-good-cookies?color=%23bbf7d0) ![NPM](https://img.shields.io/npm/l/just-good-cookies?color=%23bbf7d0) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/francescomugnai/just-good-cookies/CodeQL?color=%23bbf7d0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/francescomugnai/just-good-cookies?color=%23bbf7d0)
 
 Just Good Cookies (JGC) is a simple (but delicious) cookie consent solution made in vanilla JavaScript.
 It is designed to be fast, painless and easy to use.
@@ -62,6 +62,11 @@ Thank you!
 11. [Activate](#activate)
 12. [Panel](#panel)
 
+### Info
+
+- [Disclaimer](#disclaimerArea)
+- [ToDo](#toDo)
+
 ### WIKI - HOWTOs
 
 - 🇮🇹🇺🇸🇪🇸 [How to translate the custom strings and make JGC fully multilingual](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-translate-the-custom-strings-and-make-JGC-fully-multilingual)
@@ -74,11 +79,6 @@ Thank you!
 - 🖥 [How to avoid flickering](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-avoid-flickering)
 - 🧙🏻 [How to install JGC on a website (eg. WordPress) that uses a different CSS framework](<https://github.com/francescomugnai/just-good-cookies/wiki/How-to-install-JGC-on-a-website-(eg.-WordPress)-that-uses-a-different-CSS-framework>)
 - ❗️ [Browser support and how to deal with out-of-date browsers](https://github.com/francescomugnai/just-good-cookies/wiki/Browser-support-and-how-to-deal-with-out-of-date-browsers)
-
-### Disclaimer
-
-- [Disclaimer](#disclaimerArea)
-- [ToDo](#toDo)
 
 <hr>
 
@@ -96,7 +96,7 @@ There are 2 ways to use JGC in your projects:
 1. Copy this script and paste it on your site (ideally into the head tag)
 
 ```js
-<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.9.0/dist/justgoodcookies.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/francescomugnai/just-good-cookies@0.9.1/dist/justgoodcookies.min.js"></script>
 ```
 
 2. Install Tailwind (if you haven't already, see [below](#tailwind))
