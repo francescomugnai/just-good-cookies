@@ -64,16 +64,16 @@ Thank you!
 
 ### WIKI - HOWTOs
 
-- [How to translate the custom strings and make JGC fully multilingual](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-translate-the-custom-strings-and-make-JGC-fully-multilingual)
-- [How to customize the panel header and footer](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-customize-the-panel-header-and-footer)
-- [How to fire the preference panel from a button](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-fire-the-preference-panel)
-- [How to replace the banner description with a custom div](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-replace-the-banner-description-with-a-custom-div)
-- [How to mix and merge the automatic mode and the manual one](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-mix-and-merge-the-automatic-mode-and-the-manual-one)
-- [How to use custom fonts](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-use-custom-fonts)
-- [How to submit a new translation](<https://github.com/francescomugnai/just-good-cookies/wiki/How-to-submit-a-new-translation-(or-to-update-an-old-one)>)
-- [How to avoid flickering](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-avoid-flickering)
-- [How to install JGC on a website (eg. WordPress) that uses a different CSS framework](<https://github.com/francescomugnai/just-good-cookies/wiki/How-to-install-JGC-on-a-website-(eg.-WordPress)-that-uses-a-different-CSS-framework>)
-- [Browser support and how to deal with out-of-date browsers](https://github.com/francescomugnai/just-good-cookies/wiki/Browser-support-and-how-to-deal-with-out-of-date-browsers)
+- 🇮🇹🇺🇸🇪🇸 [How to translate the custom strings and make JGC fully multilingual](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-translate-the-custom-strings-and-make-JGC-fully-multilingual)
+- 🇮🇹🇺🇸🇪🇸 [How to submit a new translation](<https://github.com/francescomugnai/just-good-cookies/wiki/How-to-submit-a-new-translation-(or-to-update-an-old-one)>)
+- 🧑🏻‍💻 [How to customize the panel header and footer](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-customize-the-panel-header-and-footer)
+- 🎛 [How to fire the preference panel from a button](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-fire-the-preference-panel)
+- 👩🏼‍💻 [How to replace the banner description with a custom div](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-replace-the-banner-description-with-a-custom-div)
+- 🖖🏻+🤖 [How to mix and merge the automatic mode and the manual one](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-mix-and-merge-the-automatic-mode-and-the-manual-one)
+- 🖋 [How to use custom fonts](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-use-custom-fonts)
+- 🖥 [How to avoid flickering](https://github.com/francescomugnai/just-good-cookies/wiki/How-to-avoid-flickering)
+- 🧙🏻 [How to install JGC on a website (eg. WordPress) that uses a different CSS framework](<https://github.com/francescomugnai/just-good-cookies/wiki/How-to-install-JGC-on-a-website-(eg.-WordPress)-that-uses-a-different-CSS-framework>)
+- ❗️ [Browser support and how to deal with out-of-date browsers](https://github.com/francescomugnai/just-good-cookies/wiki/Browser-support-and-how-to-deal-with-out-of-date-browsers)
 
 ### Disclaimer
 
