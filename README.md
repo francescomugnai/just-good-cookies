@@ -2,8 +2,6 @@
 
 ![JGC Styles](https://raw.githubusercontent.com/francescomugnai/just-good-cookies/main/images/jgc.jpg "JGC")
 
-> 04/06/2022: I'm refactoring the code so it's cleaner and more readable (because now it's bigger than 2k loc). Wait for the versione 0.9.2 or 0.9.3.
-
 > **Please note**: JGC is in its **pre-release stage** It may be buggy and may not work as expected. Some features may be added, **others may be completely removed or delayed**.
 > 🚧 It is currently being actively tested. Use at your own risk! 🚧
 
