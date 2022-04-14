@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.9.2 (2022-04-14)
+
+### What's improved
+
+- Refactoring (code-splitting)
+
 <hr/>
 
 ## 0.9.1 (2022-04-02)
