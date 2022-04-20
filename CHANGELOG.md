@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.9.3 (2022-04-20)
+
+### What's improved
+
+- Bug Fixing
+
 ## 0.9.2 (2022-04-14)
 
 ### What's improved

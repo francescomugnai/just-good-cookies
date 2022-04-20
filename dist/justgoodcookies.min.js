@@ -547,7 +547,7 @@
       var tag = document.createElement("div");
 
       if (checkIfImgPlaceholderExist) {
-        tag.setAttribute("style", "background-image: url(".concat(JGC.returnPlaceholderImg(element), ")"));
+        tag.setAttribute("style", "background-image: url(".concat(returnPlaceholderImg(element), ")"));
       }
 
       tag.setAttribute("data-jgc-placeholder-id", getIdElement);
@@ -669,6 +669,28 @@
       return returnValue;
     }
   };
+  /**
+  * Shows an image as a placeholder, if it exists
+  */
+
+
+  function returnPlaceholderImg(element) {
+    var _JGC$placeholder5;
+
+    var checkIfImgPlaceholderExist = element.getAttribute('data-jgc-placeholder-img');
+
+    if ((checkIfImgPlaceholderExist === null || checkIfImgPlaceholderExist === void 0 ? void 0 : checkIfImgPlaceholderExist.length) > 0 && checkIfImgPlaceholderExist != 'disable') {
+      return checkIfImgPlaceholderExist;
+    }
+
+    if ((_JGC$placeholder5 = JGC.placeholder) !== null && _JGC$placeholder5 !== void 0 && _JGC$placeholder5.image && !checkIfImgPlaceholderExist) {
+      return JGC.placeholder.image;
+    }
+
+    if (checkIfImgPlaceholderExist && checkIfImgPlaceholderExist == 'disable') {
+      return;
+    }
+  }
 
   /**
   * Enable scripts

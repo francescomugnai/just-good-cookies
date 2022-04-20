@@ -38,7 +38,7 @@ export function autoMode(arrToActivate){
     setTimeout(() => {
       let checkedElement = undefined 
       document.querySelectorAll('iframe,script,link').forEach((element) => {
-        const src = element.src ||(element.tagName == 'LINK' ? element.getAttribute("href") : undefined)
+        const src = element.src || (element.tagName == 'LINK' ? element.getAttribute("href") : undefined)
         if(src) {
           if(!element.getAttribute('data-jgc-tag')){
             element.classList.remove(checkTailwindPrefix('hidden'))

@@ -159,7 +159,6 @@ export function generateOptions(){
   return arr
 }
 
-
 /**
 * Load preferences
 */
@@ -168,7 +167,6 @@ export function loadPreferences(){
   const preferenceButton = findPreferenceButton[0]
   if(preferenceButton) preferenceButton.addEventListener('click', () => managePreferences())
 }
-
 
 /**
 * Return an array of services 
@@ -245,7 +243,6 @@ return createButton.innerHTML = `
     ${ JGC.text.preferencesText ?? 'Manage and choose cookies' } 
   </button>`
 }
-
 
 /**
 * Open panel

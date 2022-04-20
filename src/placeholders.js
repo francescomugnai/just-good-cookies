@@ -13,7 +13,7 @@ export function generateIframeDivs(element){
     const getTag = element.getAttribute('data-jgc-tag')
     let tag = document.createElement("div"); 
     if(checkIfImgPlaceholderExist){
-      tag.setAttribute("style",`background-image: url(${JGC.returnPlaceholderImg(element)})`);
+      tag.setAttribute("style",`background-image: url(${returnPlaceholderImg(element)})`);
     }
     tag.setAttribute("data-jgc-placeholder-id", getIdElement)
     if(getTag) {
