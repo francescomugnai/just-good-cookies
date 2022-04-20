@@ -2,7 +2,7 @@
     @license
     JustGoodCookies
     Created by Francesco Mugnai 
-    2022 - v 0.9.3
+    2022 - v 0.9.3.2
     Released under MIT License
     If you use this script, you will always remain the sole responsible party, use it at your own risk
     https://github.com/francescomugnai/just-good-cookies

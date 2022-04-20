@@ -103,6 +103,7 @@ export function removePlaceholders(){
 * Calculate the dimensions of an iFrame (in px, in percentage or from the style attribute).
 */
 const returnIframeSize = (element, prop) =>{
+  const style = element.getAttribute('style')
   if(element.getAttribute(prop)){
     const checkWidthPercentage = element.getAttribute(prop).indexOf("%") > -1
     const checkWidthPx = element.getAttribute(prop).indexOf("px") > -1
@@ -111,16 +112,15 @@ const returnIframeSize = (element, prop) =>{
     } else {
       return element.getAttribute(prop)+'px' 
     }
-  } else {
-    const style = element.getAttribute('style')
-    const getProps = style.replace(/\s/g,'').replace(/^.*{([^}]+)}.*/,'$1').match(/([^;]+)/g)
-    let returnValue = ''
-    getProps.forEach(element => {
-      if(element.includes(prop)){
-        returnValue = element.split(":").pop()
-      }
-    });
-    return returnValue
+  } else if(style) {
+      const getProps = style.replace(/\s/g,'').replace(/^.*{([^}]+)}.*/,'$1').match(/([^;]+)/g)
+      let returnValue = ''
+      getProps.forEach(element => {
+        if(element.includes(prop)){
+          returnValue = element.split(":").pop()
+        }
+      });
+      return returnValue
   }
 }
 

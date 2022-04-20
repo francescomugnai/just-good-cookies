@@ -648,6 +648,8 @@
   */
 
   var returnIframeSize = function returnIframeSize(element, prop) {
+    var style = element.getAttribute('style');
+
     if (element.getAttribute(prop)) {
       var checkWidthPercentage = element.getAttribute(prop).indexOf("%") > -1;
       var checkWidthPx = element.getAttribute(prop).indexOf("px") > -1;
@@ -657,8 +659,7 @@
       } else {
         return element.getAttribute(prop) + 'px';
       }
-    } else {
-      var style = element.getAttribute('style');
+    } else if (style) {
       var getProps = style.replace(/\s/g, '').replace(/^.*{([^}]+)}.*/, '$1').match(/([^;]+)/g);
       var returnValue = '';
       getProps.forEach(function (element) {
