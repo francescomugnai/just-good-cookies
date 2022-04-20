@@ -700,7 +700,7 @@
   function activateToggledCookies() {
     var checkPreferences = getCookie('JgcPreferences');
 
-    for (var _i = 0, _Object$entries = Object.entries(checkPreferences['preferences']); _i < _Object$entries.length; _i++) {
+    var _loop = function _loop() {
       var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
           k = _Object$entries$_i[0],
           v = _Object$entries$_i[1];
@@ -717,11 +717,17 @@
           if (parent.hasAttribute('data-jgc-placeholder')) {
             generateIframeDivs(element);
           } else {
-            element.classList.add(checkTailwindPrefix('hidden'));
-            element.innerHTML = '';
+            if (v != false) {
+              element.classList.add(checkTailwindPrefix('hidden'));
+              element.innerHTML = '';
+            }
           }
         });
       }
+    };
+
+    for (var _i = 0, _Object$entries = Object.entries(checkPreferences['preferences']); _i < _Object$entries.length; _i++) {
+      _loop();
     }
 
     if (checkPreferences['darkBackground']) {
@@ -781,7 +787,7 @@
     var getElementsToHide = document.querySelectorAll('[data-jgc-remove]');
     var getElementsPlaceholder = document.querySelectorAll('[data-jgc-placeholder]');
 
-    var _loop = function _loop(i) {
+    var _loop2 = function _loop2(i) {
       var element = getElementsJgc[i];
 
       if (element.getAttribute('data-jgc-tag') != 'necessary') {
@@ -801,7 +807,7 @@
     };
 
     for (var i = 0; i < getElementsJgc.length; i++) {
-      _loop(i);
+      _loop2(i);
     }
 
     if (getElementsToHide.length > 0) removeScript(true);
@@ -890,7 +896,7 @@
   function replaceScripts(customAttributeToCheck) {
     var getElementsToShow = document.querySelectorAll(customAttributeToCheck);
 
-    var _loop2 = function _loop2(i) {
+    var _loop3 = function _loop3(i) {
       var element = getElementsToShow[i];
       element.style.display = '';
       element.style.backgroundColor = '';
@@ -929,7 +935,7 @@
     };
 
     for (var i = 0; i < getElementsToShow.length; i++) {
-      _loop2(i);
+      _loop3(i);
     }
   }
 

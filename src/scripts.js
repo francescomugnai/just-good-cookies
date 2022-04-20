@@ -18,8 +18,10 @@ export function activateToggledCookies(){
         if(parent.hasAttribute('data-jgc-placeholder')){
           generateIframeDivs(element)
         } else {
-          element.classList.add(checkTailwindPrefix('hidden'))
-          element.innerHTML = ''; 
+          if(v != false){
+            element.classList.add(checkTailwindPrefix('hidden'))
+            element.innerHTML = ''; 
+          }
         }
       })
     }
