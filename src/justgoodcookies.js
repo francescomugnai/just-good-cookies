@@ -2,7 +2,7 @@
     @license
     JustGoodCookies
     Created by Francesco Mugnai 
-    2022 - v 0.9.3.3
+    2022 - v 0.9.3.4
     Released under MIT License
     If you use this script, you will always remain the sole responsible party, use it at your own risk
     https://github.com/francescomugnai/just-good-cookies
@@ -269,7 +269,7 @@ class JustGoodCookies {
     this.activate = data.activate ? data.activate : null
     
     // Let's start the engine
-    window.addEventListener('load', () => {      
+    if(document.readyState == 'complete'){
       checkDarkMode() // Check Dark Mode
       loadText() // Check if there is a custom text for the banner
       generatePreferenceStorage() // Create the default user settings
@@ -279,7 +279,7 @@ class JustGoodCookies {
       loadBannerLayout(this.config.layout) // Load the banner
       openPanel() // Check whether the preferences panel should be visible or not
       this.checkCookies() // Check cookies
-    })    
+    }
   }
 }
 

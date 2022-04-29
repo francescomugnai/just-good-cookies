@@ -2090,35 +2090,7 @@
     }, {
       key: "init",
       value: function init(data) {
-        var _data$text,
-            _data$text2,
-            _data$text3,
-            _data$text4,
-            _data$text5,
-            _data$text6,
-            _data$text7,
-            _data$text8,
-            _data$text9,
-            _data$text10,
-            _data$banner,
-            _data$banner2,
-            _data$banner3,
-            _data$banner4,
-            _data$banner5,
-            _data$banner6,
-            _data$banner7,
-            _data$banner8,
-            _data$banner9,
-            _data$banner10,
-            _data$banner11,
-            _data$banner12,
-            _data$banner13,
-            _data$banner14,
-            _data$banner15,
-            _data$banner16,
-            _data$banner17,
-            _data$banner18,
-            _this = this;
+        var _data$text, _data$text2, _data$text3, _data$text4, _data$text5, _data$text6, _data$text7, _data$text8, _data$text9, _data$text10, _data$banner, _data$banner2, _data$banner3, _data$banner4, _data$banner5, _data$banner6, _data$banner7, _data$banner8, _data$banner9, _data$banner10, _data$banner11, _data$banner12, _data$banner13, _data$banner14, _data$banner15, _data$banner16, _data$banner17, _data$banner18;
 
         if (data.locale) {
           this.locales = locales;
@@ -2286,7 +2258,7 @@
 
         this.activate = data.activate ? data.activate : null; // Let's start the engine
 
-        window.addEventListener('load', function () {
+        if (document.readyState == 'complete') {
           checkDarkMode(); // Check Dark Mode
 
           loadText(); // Check if there is a custom text for the banner
@@ -2299,13 +2271,12 @@
 
           saveCookiesPreferences(); // Save cookies
 
-          loadBannerLayout(_this.config.layout); // Load the banner
+          loadBannerLayout(this.config.layout); // Load the banner
 
           openPanel(); // Check whether the preferences panel should be visible or not
 
-          _this.checkCookies(); // Check cookies
-
-        });
+          this.checkCookies(); // Check cookies
+        }
       }
     }]);
 
