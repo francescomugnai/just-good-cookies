@@ -194,7 +194,7 @@ export function managePreferences(){
               <h2 class="${ JGC.customStyle?.panelTitle ? JGC.customStyle.panelTitle : checkTailwindPrefix('dark:text-gray-300 leading-snug text-xl font-bold m-0 p-0')}">
                 ${ JGC.text?.panelTitle ? JGC.text.panelTitle : '' } 
               </h2>
-              <div class="${checkTailwindPrefix('space-x-1 md:mt-0 mt-4')}">
+              <div class="${checkTailwindPrefix('md:space-x-2 md:mt-0 mt-4 flex space-y-2 md:space-y-0 flex-col md:flex-row')}">
                 <button role="button" id="closePreferencePanel" type="button" class="${ JGC.customStyle?.saveButton ? JGC.customStyle.saveButton : `${checkTailwindPrefix('px-3 py-1 uppercase font-bold tracking-wide text-xs z-index-10 relative rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer text-green-600 ring-1 ring-green-600')}` } ">
                   ${ JGC.text?.saveButton ? JGC.text.saveButton : JGC.locale.saveAndContinue }  
                 </button>
