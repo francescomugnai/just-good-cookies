@@ -2267,7 +2267,7 @@
 
         this.activate = data.activate ? data.activate : null; // Let's start the engine
 
-        if (document.readyState == 'complete') {
+        if (document.readyState == 'complete' || document.readyState == 'loading') {
           checkDarkMode(); // Check Dark Mode
 
           loadText(); // Check if there is a custom text for the banner
