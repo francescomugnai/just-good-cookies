@@ -228,6 +228,7 @@
   function activateGoogle() {
     var _JGC$activate, _JGC$activate$GoogleA, _JGC$activate2, _JGC$activate2$Google, _JGC$activate3, _JGC$activate3$Google, _JGC$activate4, _JGC$activate4$Google;
 
+    var head = document.getElementsByTagName("head")[0];
     var GoogleAnalytics = document.createElement('script');
     var GoogleAnalyticsCode = document.createElement('script');
     var GoogleAnalyticsId = (_JGC$activate = JGC.activate) !== null && _JGC$activate !== void 0 && (_JGC$activate$GoogleA = _JGC$activate.GoogleAnalytics) !== null && _JGC$activate$GoogleA !== void 0 && _JGC$activate$GoogleA.id ? JGC.activate.GoogleAnalytics.id.escape() : false;
@@ -235,9 +236,9 @@
     var GoogleAnalyticsAdStorage = (_JGC$activate3 = JGC.activate) !== null && _JGC$activate3 !== void 0 && (_JGC$activate3$Google = _JGC$activate3.GoogleAnalytics) !== null && _JGC$activate3$Google !== void 0 && _JGC$activate3$Google.ad_storage ? JGC.activate.GoogleAnalytics.ad_storage : false;
     var GoogleAnalyticsAnalyticsStorage = (_JGC$activate4 = JGC.activate) !== null && _JGC$activate4 !== void 0 && (_JGC$activate4$Google = _JGC$activate4.GoogleAnalytics) !== null && _JGC$activate4$Google !== void 0 && _JGC$activate4$Google.analytics_storage ? JGC.activate.GoogleAnalytics.analytics_storage : false;
     GoogleAnalytics.setAttribute('src', "https://www.googletagmanager.com/gtag/js?id=".concat(GoogleAnalyticsId));
-    document.head.appendChild(GoogleAnalytics);
-    GoogleAnalyticsCode.text = "window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('consent', 'default', {\n    'ad_storage': '".concat(GoogleAnalyticsAdStorage == true ? 'granted' : 'denied', "',\n    'analytics_storage': '").concat(GoogleAnalyticsAnalyticsStorage == true ? 'granted' : 'denied', "',\n  });\n  gtag('js', new Date());\n  gtag('config', '").concat(GoogleAnalyticsId, "', { 'anonymize_ip': ").concat(GoogleAnalyticsAnonymized !== null && GoogleAnalyticsAnonymized !== void 0 ? GoogleAnalyticsAnonymized : false, " });");
-    document.head.appendChild(GoogleAnalyticsCode);
+    GoogleAnalyticsCode.text = "window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('consent', 'default', {\n      'ad_storage': '".concat(GoogleAnalyticsAdStorage == true ? 'granted' : 'denied', "',\n      'analytics_storage': '").concat(GoogleAnalyticsAnalyticsStorage == true ? 'granted' : 'denied', "',\n    });\n    gtag('js', new Date());\n    gtag('config', '").concat(GoogleAnalyticsId, "', { 'anonymize_ip': ").concat(GoogleAnalyticsAnonymized !== null && GoogleAnalyticsAnonymized !== void 0 ? GoogleAnalyticsAnonymized : false, " });");
+    head.insertBefore(GoogleAnalytics, head.firstChild);
+    head.appendChild(GoogleAnalyticsCode);
   }
   /**
   * Activate Facebook Pixel

@@ -4,23 +4,24 @@ import JGC from './justgoodcookies';
 * Activate Google Analytics
 */
 export function activateGoogle() {
-  let GoogleAnalytics = document.createElement('script');
-  let GoogleAnalyticsCode = document.createElement('script');
-  let GoogleAnalyticsId = JGC.activate?.GoogleAnalytics?.id ? JGC.activate.GoogleAnalytics.id.escape() : false
-  let GoogleAnalyticsAnonymized = JGC.activate?.GoogleAnalytics?.anonymized ? JGC.activate.GoogleAnalytics.anonymized : false
-  let GoogleAnalyticsAdStorage = JGC.activate?.GoogleAnalytics?.ad_storage ? JGC.activate.GoogleAnalytics.ad_storage : false
-  let GoogleAnalyticsAnalyticsStorage = JGC.activate?.GoogleAnalytics?.analytics_storage ? JGC.activate.GoogleAnalytics.analytics_storage : false
-  GoogleAnalytics.setAttribute('src', `https://www.googletagmanager.com/gtag/js?id=${ GoogleAnalyticsId }`);
-  document.head.appendChild(GoogleAnalytics);
-  GoogleAnalyticsCode.text = `window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    'ad_storage': '${ GoogleAnalyticsAdStorage == true ? 'granted': 'denied' }',
-    'analytics_storage': '${ GoogleAnalyticsAnalyticsStorage == true ? 'granted': 'denied' }',
-  });
-  gtag('js', new Date());
-  gtag('config', '${ GoogleAnalyticsId }', { 'anonymize_ip': ${ GoogleAnalyticsAnonymized ?? false } });`;
-  document.head.appendChild(GoogleAnalyticsCode);
+    let head = document.getElementsByTagName("head")[0]
+    let GoogleAnalytics = document.createElement('script');
+    let GoogleAnalyticsCode = document.createElement('script');
+    let GoogleAnalyticsId = JGC.activate?.GoogleAnalytics?.id ? JGC.activate.GoogleAnalytics.id.escape() : false
+    let GoogleAnalyticsAnonymized = JGC.activate?.GoogleAnalytics?.anonymized ? JGC.activate.GoogleAnalytics.anonymized : false
+    let GoogleAnalyticsAdStorage = JGC.activate?.GoogleAnalytics?.ad_storage ? JGC.activate.GoogleAnalytics.ad_storage : false
+    let GoogleAnalyticsAnalyticsStorage = JGC.activate?.GoogleAnalytics?.analytics_storage ? JGC.activate.GoogleAnalytics.analytics_storage : false
+    GoogleAnalytics.setAttribute('src', `https://www.googletagmanager.com/gtag/js?id=${ GoogleAnalyticsId }`);  
+    GoogleAnalyticsCode.text = `window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': '${ GoogleAnalyticsAdStorage == true ? 'granted': 'denied' }',
+      'analytics_storage': '${ GoogleAnalyticsAnalyticsStorage == true ? 'granted': 'denied' }',
+    });
+    gtag('js', new Date());
+    gtag('config', '${ GoogleAnalyticsId }', { 'anonymize_ip': ${ GoogleAnalyticsAnonymized ?? false } });`;
+    head.insertBefore(GoogleAnalytics, head.firstChild);
+    head.appendChild(GoogleAnalyticsCode);
 }
 
 /**
