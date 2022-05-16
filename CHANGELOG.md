@@ -1,6 +1,6 @@
 # Release Notes
 
-## 0.9.6 (2022-05-16)
+## 0.9.7 (2022-05-16)
 
 ### What's improved
 
