@@ -163,9 +163,11 @@ export function generateOptions(){
 * Load preferences
 */
 export function loadPreferences(){
-  const findPreferenceButton = document.querySelectorAll('[data-jgc-preferences]')
-  const preferenceButton = findPreferenceButton[0]
-  if(preferenceButton) preferenceButton.addEventListener('click', () => managePreferences())
+  setTimeout(() => {
+    const findPreferenceButton = document.querySelectorAll('[data-jgc-preferences]')
+    const preferenceButton = findPreferenceButton[0]
+    if(preferenceButton) preferenceButton.addEventListener('click', () => managePreferences())
+  }, 200);
 }
 
 /**

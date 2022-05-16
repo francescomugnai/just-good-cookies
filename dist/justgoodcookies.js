@@ -1116,11 +1116,13 @@
   */
 
   function loadPreferences() {
-    var findPreferenceButton = document.querySelectorAll('[data-jgc-preferences]');
-    var preferenceButton = findPreferenceButton[0];
-    if (preferenceButton) preferenceButton.addEventListener('click', function () {
-      return managePreferences();
-    });
+    setTimeout(function () {
+      var findPreferenceButton = document.querySelectorAll('[data-jgc-preferences]');
+      var preferenceButton = findPreferenceButton[0];
+      if (preferenceButton) preferenceButton.addEventListener('click', function () {
+        return managePreferences();
+      });
+    }, 200);
   }
   /**
   * Return an array of services 
