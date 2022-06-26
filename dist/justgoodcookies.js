@@ -1453,6 +1453,50 @@
     }
   }
   /**
+  * Get cookie preferences (useful for the callbacks from the frontend)
+  */
+
+  function getCookieId(name) {
+    var cookie = {};
+    document.cookie.split(';').forEach(function (el) {
+      var _el$split3 = el.split('='),
+          _el$split4 = _slicedToArray(_el$split3, 2),
+          k = _el$split4[0],
+          v = _el$split4[1];
+
+      cookie[k.trim()] = v;
+    });
+
+    if (cookie[name]) {
+      var cookieName = JSON.parse(cookie[name]);
+      return cookieName['id'];
+    } else {
+      return null;
+    }
+  }
+  /**
+  * Get cookie (useful for a callback from the frontend)
+  */
+
+  function getCookiePreferences(name) {
+    var cookie = {};
+    document.cookie.split(';').forEach(function (el) {
+      var _el$split5 = el.split('='),
+          _el$split6 = _slicedToArray(_el$split5, 2),
+          k = _el$split6[0],
+          v = _el$split6[1];
+
+      cookie[k.trim()] = v;
+    });
+
+    if (cookie[name]) {
+      var cookieName = JSON.parse(cookie[name]);
+      return cookieName['preferences'];
+    } else {
+      return null;
+    }
+  }
+  /**
   * Refresh the local storage
   */
 
@@ -1986,6 +2030,9 @@
       this.tailwindPrefix = ''; // Tailwind Prefix
 
       this.text = undefined; // Custom texts
+
+      this.getCookieId = getCookieId;
+      this.getCookiePreferences = getCookiePreferences;
 
       String.prototype.escape = function () {
         var replace = {

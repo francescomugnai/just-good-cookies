@@ -2,7 +2,7 @@
     @license
     JustGoodCookies
     Created by Francesco Mugnai 
-    2022 - v 0.9.6
+    2022 - v 0.9.8
     Released under MIT License
     If you use this script, you will always remain the sole responsible party, use it at your own risk
     https://github.com/francescomugnai/just-good-cookies
@@ -12,7 +12,7 @@
 import { googleTagManager, checkActivations }  from "./activate";
 import { autoMode, generatePreferenceStorage, checkCookiesAutoMode }  from "./autoMode";
 import { showBanner, closeBanner }  from "./banner";
-import { getCookie, saveCookie, checkCookieExpiration, saveCookiesPreferences }  from "./cookies";
+import { getCookie, getCookieId, getCookiePreferences, saveCookie, checkCookieExpiration, saveCookiesPreferences }  from "./cookies";
 import { locales }  from "./locales";
 import { activateToggledCookies, hideScripts, removeScript, removeDivsOfUserAcceptedIframes, checkGoogleAnalytics }  from "./scripts";
 import { loadBannerLayout }  from "./styles";
@@ -45,7 +45,10 @@ class JustGoodCookies {
     this.placeholder = undefined // Placeholder
     this.tailwindPrefix = '' // Tailwind Prefix
     this.text = undefined // Custom texts
-    
+
+    this.getCookieId = getCookieId
+    this.getCookiePreferences = getCookiePreferences
+
     String.prototype.escape = function() {
       var replace = {
         '>': '&gt;',
@@ -283,5 +286,6 @@ class JustGoodCookies {
     }
   }
 }
+
 
 export default new JustGoodCookies()
