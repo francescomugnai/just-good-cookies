@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.9.9 (2022-06-12)
+
+### What's improved
+
+- Fixed a bug that prevented the banner from closing on certain mobile browsers
+
 ## 0.9.8 (2022-06-26)
 
 ### What's improved

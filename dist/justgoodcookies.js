@@ -8,8 +8,8 @@
  */
 
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('core-js/modules/es.regexp.exec.js'), require('core-js/modules/es.string.replace.js'), require('core-js/modules/es.object.keys.js'), require('core-js/modules/es.object.entries.js'), require('core-js/modules/es.array.concat.js'), require('core-js/modules/es.object.to-string.js'), require('core-js/modules/web.dom-collections.for-each.js'), require('core-js/modules/es.array.includes.js'), require('core-js/modules/es.string.includes.js'), require('core-js/modules/es.object.values.js'), require('core-js/modules/es.regexp.to-string.js'), require('core-js/modules/es.array.slice.js'), require('core-js/modules/es.string.split.js'), require('core-js/modules/es.string.trim.js'), require('core-js/modules/es.json.stringify.js'), require('core-js/modules/es.regexp.test.js'), require('core-js/modules/es.array.join.js'), require('core-js/modules/es.array.map.js'), require('core-js/modules/es.symbol.js'), require('core-js/modules/es.symbol.description.js'), require('core-js/modules/es.array.iterator.js'), require('core-js/modules/es.string.iterator.js'), require('core-js/modules/web.dom-collections.iterator.js'), require('core-js/modules/web.url.js'), require('core-js/modules/web.url-search-params.js'), require('core-js/modules/es.array.index-of.js'), require('core-js/modules/es.string.match.js')) :
-  typeof define === 'function' && define.amd ? define(['core-js/modules/es.regexp.exec.js', 'core-js/modules/es.string.replace.js', 'core-js/modules/es.object.keys.js', 'core-js/modules/es.object.entries.js', 'core-js/modules/es.array.concat.js', 'core-js/modules/es.object.to-string.js', 'core-js/modules/web.dom-collections.for-each.js', 'core-js/modules/es.array.includes.js', 'core-js/modules/es.string.includes.js', 'core-js/modules/es.object.values.js', 'core-js/modules/es.regexp.to-string.js', 'core-js/modules/es.array.slice.js', 'core-js/modules/es.string.split.js', 'core-js/modules/es.string.trim.js', 'core-js/modules/es.json.stringify.js', 'core-js/modules/es.regexp.test.js', 'core-js/modules/es.array.join.js', 'core-js/modules/es.array.map.js', 'core-js/modules/es.symbol.js', 'core-js/modules/es.symbol.description.js', 'core-js/modules/es.array.iterator.js', 'core-js/modules/es.string.iterator.js', 'core-js/modules/web.dom-collections.iterator.js', 'core-js/modules/web.url.js', 'core-js/modules/web.url-search-params.js', 'core-js/modules/es.array.index-of.js', 'core-js/modules/es.string.match.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('core-js/modules/es.regexp.exec.js'), require('core-js/modules/es.string.replace.js'), require('core-js/modules/es.object.keys.js'), require('core-js/modules/es.object.entries.js'), require('core-js/modules/es.array.concat.js'), require('core-js/modules/es.object.to-string.js'), require('core-js/modules/web.dom-collections.for-each.js'), require('core-js/modules/es.array.includes.js'), require('core-js/modules/es.string.includes.js'), require('core-js/modules/es.object.values.js'), require('core-js/modules/es.array.slice.js'), require('core-js/modules/es.regexp.to-string.js'), require('core-js/modules/es.string.split.js'), require('core-js/modules/es.string.trim.js'), require('core-js/modules/es.json.stringify.js'), require('core-js/modules/es.regexp.test.js'), require('core-js/modules/es.array.join.js'), require('core-js/modules/es.array.map.js'), require('core-js/modules/es.symbol.js'), require('core-js/modules/es.symbol.description.js'), require('core-js/modules/es.array.iterator.js'), require('core-js/modules/es.string.iterator.js'), require('core-js/modules/web.dom-collections.iterator.js'), require('core-js/modules/web.url.js'), require('core-js/modules/web.url-search-params.js'), require('core-js/modules/es.array.index-of.js'), require('core-js/modules/es.string.match.js')) :
+  typeof define === 'function' && define.amd ? define(['core-js/modules/es.regexp.exec.js', 'core-js/modules/es.string.replace.js', 'core-js/modules/es.object.keys.js', 'core-js/modules/es.object.entries.js', 'core-js/modules/es.array.concat.js', 'core-js/modules/es.object.to-string.js', 'core-js/modules/web.dom-collections.for-each.js', 'core-js/modules/es.array.includes.js', 'core-js/modules/es.string.includes.js', 'core-js/modules/es.object.values.js', 'core-js/modules/es.array.slice.js', 'core-js/modules/es.regexp.to-string.js', 'core-js/modules/es.string.split.js', 'core-js/modules/es.string.trim.js', 'core-js/modules/es.json.stringify.js', 'core-js/modules/es.regexp.test.js', 'core-js/modules/es.array.join.js', 'core-js/modules/es.array.map.js', 'core-js/modules/es.symbol.js', 'core-js/modules/es.symbol.description.js', 'core-js/modules/es.array.iterator.js', 'core-js/modules/es.string.iterator.js', 'core-js/modules/web.dom-collections.iterator.js', 'core-js/modules/web.url.js', 'core-js/modules/web.url-search-params.js', 'core-js/modules/es.array.index-of.js', 'core-js/modules/es.string.match.js'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.justgoodcookies = factory());
 })(this, (function () { 'use strict';
 
@@ -1400,7 +1400,7 @@
     date.setTime(date.getTime() + cookieDuration);
     var item = {
       value: val,
-      expiry: date.toString()
+      expiry: date
     };
 
     if (!checkPreference['duration']) {
@@ -1421,7 +1421,7 @@
         delete _getPreferences.duration;
         var _item = {
           value: "1",
-          expiry: date.toString()
+          expiry: date
         };
         saveObj = _objectSpread2(_objectSpread2({}, _getPreferences), {}, {
           duration: _item

@@ -10,7 +10,7 @@ export function checkCookieExpiration(val){
   let saveObj = {}
   let date = new Date();
   date.setTime(date.getTime() + cookieDuration);
-  let item = { value: val, expiry: date.toString() }
+  let item = { value: val, expiry: date }
   if(!checkPreference['duration']) {
     let getPreferences = getCookie('JgcPreferences');
       const uniqueId = Date.now() + Math.random().toString(16).slice(2)
@@ -22,7 +22,7 @@ export function checkCookieExpiration(val){
       if (now.setHours(0, 0, 0, 0) >= storedData.setHours(0, 0, 0, 0)) {
         let getPreferences = getCookie('JgcPreferences');
         delete getPreferences.duration;
-        let item = { value: "1", expiry: date.toString() }
+        let item = { value: "1", expiry: date }
         saveObj = {...getPreferences, duration: item}
         saveCookie(saveObj)
         showBanner()
