@@ -7,7 +7,7 @@
 
 <br/>
 
-![npm](https://img.shields.io/badge/Just%20Good%20Cookies-0.9.9-%23abe1be) ![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/francescomugnai/just-good-cookies?color=b8eecc) ![GitHub top language](https://img.shields.io/github/languages/top/francescomugnai/just-good-cookies?color=%23bbf7d0) ![npm bundle size](https://img.shields.io/bundlephobia/min/just-good-cookies?color=%23bbf7d0) ![NPM](https://img.shields.io/npm/l/just-good-cookies?color=%23bbf7d0) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/francescomugnai/just-good-cookies/CodeQL?color=%23bbf7d0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/francescomugnai/just-good-cookies?color=%23bbf7d0)
+![npm](https://img.shields.io/badge/Just%20Good%20Cookies-0.9.9-%23abe1be) ![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/francescomugnai/just-good-cookies?color=b8eecc) ![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hy/francescomugnai/just-good-cookies?color=b8eecc) ![GitHub top language](https://img.shields.io/github/languages/top/francescomugnai/just-good-cookies?color=%23bbf7d0) ![npm bundle size](https://img.shields.io/bundlephobia/min/just-good-cookies?color=%23bbf7d0) ![NPM](https://img.shields.io/npm/l/just-good-cookies?color=%23bbf7d0) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/francescomugnai/just-good-cookies/CodeQL?color=%23bbf7d0) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/francescomugnai/just-good-cookies?color=%23bbf7d0)
 
 Just Good Cookies (JGC) is a simple (but delicious) cookie consent solution made in vanilla JavaScript.
 It is designed to be fast, painless and easy to use.
