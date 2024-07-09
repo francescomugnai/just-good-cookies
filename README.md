@@ -3,7 +3,7 @@
 ![JGC Styles](https://raw.githubusercontent.com/francescomugnai/just-good-cookies/main/images/jgc.jpg "JGC")
 
 > **Please note**: This library may soon enter a deprecation phase. While not certain yet, I am considering discontinuing updates for this project. I greatly appreciate your support and usage over the past years.
-> I strongly encourage you to consider transitioning to my new, improved solution [RSCS](https://github.com/your-username/RSCS-Really-Simple-Cookie-Solution). 
+> I strongly encourage you to consider transitioning to my new, improved solution [RSCS](https://github.com/francescomugnai/RSCS-Really-Simple-Cookie-Solution). 
 > This new library offers several advantages: 
 > - Faster performance
 > - Lighter footprint
