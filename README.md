@@ -2,8 +2,15 @@
 
 ![JGC Styles](https://raw.githubusercontent.com/francescomugnai/just-good-cookies/main/images/jgc.jpg "JGC")
 
-> **Please note**: JGC is in its **pre-release stage** It may be buggy and may not work as expected. Some features may be added, **others may be completely removed or delayed**.
-> 🚧 It is currently being actively tested. Use at your own risk! 🚧
+> **Please note**: This library may soon enter a deprecation phase. While not certain yet, I am considering discontinuing updates for this project. I greatly appreciate your support and usage over the past years.
+> I strongly encourage you to consider transitioning to my new, improved solution [RSCS](https://github.com/your-username/RSCS-Really-Simple-Cookie-Solution). 
+> This new library offers several advantages: 
+> - Faster performance
+> - Lighter footprint
+> - Easier management
+> - No CSS dependency 
+> 🙌🏻
+
 
 <br/>
 
